@@ -13,20 +13,10 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import {Moon, Sun, LayoutDashboard, FileText, Lightbulb } from "lucide-react";
-import {useEffect, useState} from "react";
 import {useTheme} from "@/components/ThemeProvider";
 
 const DashboardSidebar = () => {
-  const [mounted, setMounted] = useState(false);
   const {theme, setTheme} = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <SidebarProvider>
@@ -71,3 +61,4 @@ const DashboardSidebar = () => {
 };
 
 export default DashboardSidebar;
+
