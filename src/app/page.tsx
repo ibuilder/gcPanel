@@ -3,6 +3,10 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {useEffect, useState} from "react";
 import {Weather, getWeather} from "@/services/weather";
+import {cn} from "@/lib/utils";
+import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
+import DashboardSidebar from "@/components/DashboardSidebar";
+import {Toaster} from "@/components/ui/toaster";
 import {
   BarChart,
   Bar,
@@ -12,10 +16,6 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
-import {cn} from "@/lib/utils";
-import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
-import DashboardSidebar from "@/components/DashboardSidebar";
-import {Toaster} from "@/components/ui/toaster";
 
 
 export default function Home() {
