@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sidebar";
 import {Moon, Sun} from "lucide-react";
 import {useEffect, useState} from "react";
-import {useTheme} from "@/components/ThemeProvider";
+import {useTheme} from "next-themes";
 
 const DashboardSidebar = () => {
   const [mounted, setMounted] = useState(false);
@@ -68,4 +68,5 @@ const DashboardSidebar = () => {
 };
 
 export default DashboardSidebar;
+
 

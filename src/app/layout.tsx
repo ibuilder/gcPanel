@@ -13,11 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'ConstructAI',
-  description: 'Construction Management Dashboard',
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,4 +33,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 
