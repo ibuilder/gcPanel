@@ -3,7 +3,15 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {useEffect, useState} from "react";
 import {Weather, getWeather} from "@/services/weather";
-import {CartesianGrid, Legend, Tooltip, XAxis, YAxis, Bar, BarChart } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from 'recharts';
 import {cn} from "@/lib/utils";
 import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
 import DashboardSidebar from "@/components/DashboardSidebar";
