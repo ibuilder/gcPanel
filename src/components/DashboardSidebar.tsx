@@ -12,7 +12,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import {Moon, Sun} from "lucide-react";
+import {Moon, Sun, LayoutDashboard, FileText, Lightbulb } from "lucide-react";
 import {useEffect, useState} from "react";
 import {useTheme} from "next-themes";
 
@@ -30,7 +30,7 @@ const DashboardSidebar = () => {
 
   return (
     <SidebarProvider>
-      <Sidebar collapsible="icon">
+      <Sidebar collapsible="icon" className="shadow-md">
         <SidebarHeader>
           <SidebarTrigger/>
         </SidebarHeader>
@@ -38,16 +38,19 @@ const DashboardSidebar = () => {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton>
+                <LayoutDashboard className="mr-2 h-4 w-4"/>
                 <span>Dashboard</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton>
-                <span>Document Management</span>
+                <FileText className="mr-2 h-4 w-4"/>
+                <span>Documents</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton>
+                <Lightbulb className="mr-2 h-4 w-4"/>
                 <span>AI Insights</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -58,7 +61,7 @@ const DashboardSidebar = () => {
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             className="flex items-center gap-2 rounded-md p-2 text-left text-sm outline-none transition-transform hover:bg-accent hover:text-accent-foreground"
           >
-            {theme === "light" ? <Moon className="w-4 h-4"/> : <Sun className="w-4 h-4"/>}
+            {theme === "light" ? <Moon className="h-4 w-4"/> : <Sun className="h-4 w-4"/>}
             <span className="text-sm">{theme === "light" ? "Dark" : "Light"} mode</span>
           </button>
         </SidebarFooter>
@@ -68,5 +71,3 @@ const DashboardSidebar = () => {
 };
 
 export default DashboardSidebar;
-
-
