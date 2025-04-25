@@ -3,7 +3,6 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {useEffect, useState} from "react";
 import {Weather, getWeather} from "@/services/weather";
-import {cn} from "@/lib/utils";
 import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
 import DashboardSidebar from "@/components/DashboardSidebar";
 import {Toaster} from "@/components/ui/toaster";
@@ -121,10 +120,10 @@ export default function Home() {
 
           {weather && (
             <div className="mt-6">
-              <Card>
+              <Card className="rounded-lg shadow-md">
                 <CardHeader>
-                  <CardTitle>Current Weather</CardTitle>
-                  <CardDescription>Weather conditions at the project site</CardDescription>
+                  <CardTitle className="text-lg font-semibold">Current Weather</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">Weather conditions at the project site</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="text-xl">Temperature: {weather.temperatureFarenheit}°F</div>
@@ -135,40 +134,40 @@ export default function Home() {
           )}
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mt-4">
-            <Card>
+            <Card className="rounded-lg shadow-md">
               <CardHeader>
-                <CardTitle>Project Status</CardTitle>
-                <CardDescription>Overall project completion</CardDescription>
+                <CardTitle className="text-lg font-semibold">Project Status</CardTitle>
+                <CardDescription className="text-sm text-muted-foreground">Overall project completion</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">75%</div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="rounded-lg shadow-md">
               <CardHeader>
-                <CardTitle>Budget Overview</CardTitle>
-                <CardDescription>Remaining budget</CardDescription>
+                <CardTitle className="text-lg font-semibold">Budget Overview</CardTitle>
+                <CardDescription className="text-sm text-muted-foreground">Remaining budget</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">$250,000</div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="rounded-lg shadow-md">
               <CardHeader>
-                <CardTitle>Open RFIs</CardTitle>
-                <CardDescription>Requests for Information</CardDescription>
+                <CardTitle className="text-lg font-semibold">Open RFIs</CardTitle>
+                <CardDescription className="text-sm text-muted-foreground">Requests for Information</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">15</div>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="rounded-lg shadow-md">
               <CardHeader>
-                <CardTitle>Upcoming Deadlines</CardTitle>
-                <CardDescription>Submittals due this week</CardDescription>
+                <CardTitle className="text-lg font-semibold">Upcoming Deadlines</CardTitle>
+                <CardDescription className="text-sm text-muted-foreground">Submittals due this week</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">3</div>
@@ -177,9 +176,9 @@ export default function Home() {
           </div>
 
           <div className="mt-6">
-            <Card>
+            <Card className="rounded-lg shadow-md">
               <CardHeader>
-                <CardTitle>Budget vs Actual vs Forecast</CardTitle>
+                <CardTitle className="text-lg font-semibold">Budget vs Actual vs Forecast</CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
@@ -211,4 +210,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-

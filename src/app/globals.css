@@ -8,73 +8,73 @@ body {
 
 @layer base {
   :root {
-    --background: 220 18% 94%; /* Light beige for warmth */
-    --foreground: 220 20% 20%; /* Softer dark gray for readability */
+    --background: 220 18% 94%; /* Light gray (#F5F5F5) */
+    --foreground: 220 20% 20%; /* Dark blue (#214252) */
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
-    --primary: 260 60% 55%; /* Vibrant purple */
+    --primary: 180 50% 40%; /* Teal (#26A69A) */
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 80%; /* Light muted blue-gray */
+    --secondary: 210 20% 80%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 30% 85%; /* Very light gray for subtle backgrounds */
+    --muted: 210 30% 85%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 25 80% 60%; /* Coral for a pop of color */
+    --accent: 180 50% 40%; /* Teal (#26A69A) */
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 70% 50%; /* Classic red for destructive actions */
+    --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
     --border: 214.3 31.8% 91.6%;
     --input: 214.3 31.8% 91.6%;
-    --ring: 260 60% 55%; /* Keep ring color consistent with primary */
-    --chart-1: 40 95% 65%; /* Vivid orange */
-    --chart-2: 160 75% 50%; /* Emerald green */
-    --chart-3: 280 70% 60%; /* Amethyst purple */
-    --chart-4: 50 90% 55%; /* Golden yellow */
-    --chart-5: 330 85% 65%; /* Raspberry pink */
-    --radius: 0.75rem; /* Slightly larger radius for softer corners */
-    --sidebar-background: 0 0% 100%; /* Pure white */
-    --sidebar-foreground: 220 25% 30%; /* Darker gray for better readability */
-    --sidebar-primary: 260 60% 55%; /* Vibrant purple */
+    --ring: 180 50% 40%; /* Teal (#26A69A) */
+    --chart-1: 40 95% 65%;
+    --chart-2: 160 75% 50%;
+    --chart-3: 280 70% 60%;
+    --chart-4: 50 90% 55%;
+    --chart-5: 330 85% 65%;
+    --radius: 0.75rem;
+    --sidebar-background: 33, 48, 62; /* Dark blue (#21303E) */
+    --sidebar-foreground: 220 25% 80%; /* Light gray */
+    --sidebar-primary: 180 50% 40%; /* Teal (#26A69A) */
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 90%; /* Very light gray for subtle highlights */
+    --sidebar-accent: 220 15% 90%;
     --sidebar-accent-foreground: 220 25% 30%;
     --sidebar-border: 214.3 31.8% 91.6%;
-    --sidebar-ring: 260 60% 55%;
+    --sidebar-ring: 180 50% 40%; /* Teal (#26A69A) */
   }
   .dark {
-    --background: 220 15% 15%; /* Dark charcoal gray */
-    --foreground: 220 20% 90%; /* Light gray for readability */
+    --background: 33, 48, 62; /* Dark blue (#21303E) */
+    --foreground: 220 20% 90%; /* Light gray (#F5F5F5) */
     --card: 220 12% 20%;
     --card-foreground: 210 20% 90%;
     --popover: 220 12% 20%;
     --popover-foreground: 210 20% 90%;
-    --primary: 260 60% 65%; /* Slightly lighter purple */
+    --primary: 180 50% 50%; /* Teal (#26A69A) */
     --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 220 10% 35%; /* Darker muted blue-gray */
+    --secondary: 220 10% 35%;
     --secondary-foreground: 210 20% 90%;
-    --muted: 220 10% 30%; /* Darker light gray */
+    --muted: 220 10% 30%;
     --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 25 80% 70%; /* Lighter coral */
+    --accent: 180 50% 50%; /* Teal (#26A69A) */
     --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 70% 60%; /* Slightly less intense red */
+    --destructive: 0 70% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 216 12% 30%;
     --input: 216 12% 30%;
-    --ring: 260 60% 65%;
+    --ring: 180 50% 50%; /* Teal (#26A69A) */
     --chart-1: 40 95% 75%;
     --chart-2: 160 75% 60%;
     --chart-3: 280 70% 70%;
     --chart-4: 50 90% 65%;
     --chart-5: 330 85% 75%;
-    --sidebar-background: 220 12% 20%; /* Dark gray */
-    --sidebar-foreground: 220 20% 80%; /* Light gray */
-    --sidebar-primary: 260 60% 65%; /* Slightly lighter purple */
+    --sidebar-background: 33, 48, 62; /* Dark blue (#21303E) */
+    --sidebar-foreground: 220 20% 80%; /* Light gray (#F5F5F5) */
+    --sidebar-primary: 180 50% 50%; /* Teal (#26A69A) */
     --sidebar-primary-foreground: 222.2 47.4% 11.2%;
-    --sidebar-accent: 220 10% 30%; /* Darker subtle highlight */
+    --sidebar-accent: 220 10% 30%;
     --sidebar-accent-foreground: 220 20% 80%;
     --sidebar-border: 216 12% 30%;
-    --sidebar-ring: 260 60% 65%;
+    --sidebar-ring: 180 50% 50%; /* Teal (#26A69A) */
   }
 }
 
@@ -86,3 +86,4 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
