@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sidebar";
 import {Moon, Sun, LayoutDashboard, FileText, Lightbulb } from "lucide-react";
 import {useEffect, useState} from "react";
-import {useTheme} from "next-themes";
+import {useTheme} from "@/components/ThemeProvider";
 
 const DashboardSidebar = () => {
   const [mounted, setMounted] = useState(false);
