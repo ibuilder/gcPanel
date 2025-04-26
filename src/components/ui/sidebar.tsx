@@ -565,17 +565,21 @@ const SidebarMenuButton = React.forwardRef<
       }
     }, [href, router]);
 
-    const content = (
-      <>
-        {children}
-      </>
-    );
-
     return (
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            {Comp === React.Fragment ? (
+             {href ? (
+                <Link
+                  href={href}
+                  ref={ref}
+                  data-sidebar="menu-button"
+                  className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+                  {...props}
+                >
+                  {children}
+                </Link>
+              ) : (
                 <button
                   ref={ref}
                   data-sidebar="menu-button"
@@ -583,18 +587,8 @@ const SidebarMenuButton = React.forwardRef<
                   onClick={handleClick}
                   {...props}
                 >
-                  {content}
+                  {children}
                 </button>
-              ) : (
-                <Link
-                  href={href || ""}
-                  ref={ref}
-                  data-sidebar="menu-button"
-                  className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-                  {...props}
-                >
-                  {content}
-                </Link>
               )}
           </TooltipTrigger>
           {tooltip ? (
@@ -785,4 +779,3 @@ declare module "react" {
     "data-active"?: boolean;
   }
 }
-

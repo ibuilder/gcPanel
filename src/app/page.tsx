@@ -14,7 +14,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  CartesianGrid
+  CartesianGrid, // Correct import
 } from 'recharts'; // Correct import
 import {Skeleton} from "@/components/ui/skeleton";
 
@@ -80,13 +80,13 @@ const data = [
     Budget: 2000,
     Actual: 9800,
     Forecast: 2290,
-  },
+    },
   {
     name: 'Nov',
     Budget: 2780,
     Actual: 3908,
     Forecast: 2000,
-  },
+    },
   {
     name: 'Dec',
     Budget: 1890,
@@ -250,4 +250,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-
