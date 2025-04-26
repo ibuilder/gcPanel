@@ -15,7 +15,7 @@ import {Button} from '@/components/ui/button';
 import {Separator} from '@/components/ui/separator';
 import {Input} from '@/components/ui/input';
 import {Sheet, SheetContent} from '@/components/ui/sheet';
-import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from '@/components/ui/tooltip';
+import {TooltipProvider, TooltipContent, TooltipTrigger} from '@/components/ui/tooltip';
 import {Skeleton} from '@/components/ui/skeleton';
 import {AriaAttributes, DOMAttributes} from 'react';
 import {useTheme as useNextTheme} from 'next-themes';
@@ -273,7 +273,7 @@ const SidebarComponent = React.forwardRef<
   }
 );
 
-SidebarComponent.displayName = 'Sidebar';
+SidebarComponent.displayName = 'SidebarComponent';
 
 interface SidebarTriggerProps extends React.ComponentProps<typeof Button> {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -287,7 +287,7 @@ const SidebarTriggerComponent = React.forwardRef<
 
   return (
     <Button
-      ref={ref as React.Ref<HTMLButtonElement>}
+      ref={ref}
       data-sidebar="trigger"
       variant="ghost"
       size="icon"
@@ -304,7 +304,7 @@ const SidebarTriggerComponent = React.forwardRef<
   );
 });
 
-SidebarTriggerComponent.displayName = 'SidebarTrigger';
+SidebarTriggerComponent.displayName = 'SidebarTriggerComponent';
 
 interface SidebarRailProps extends React.ComponentProps<'button'> {}
 
@@ -466,7 +466,7 @@ interface SidebarGroupLabelProps extends React.ComponentProps<'div'> {
   asChild?: boolean;
 }
 
-const SidebarGroupLabelComponent = React.forwardRef<
+const SidebarGroupLabelComponentRef = React.forwardRef<
   HTMLDivElement,
   SidebarGroupLabelProps
 >((props, ref) => {
@@ -476,7 +476,6 @@ const SidebarGroupLabelComponent = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      data-sidebar="group-label"
       className={cn(
         'duration-200 flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opa] ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
         'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
@@ -487,7 +486,7 @@ const SidebarGroupLabelComponent = React.forwardRef<
   );
 });
 
-SidebarGroupLabelComponent.displayName = 'SidebarGroupLabelComponent';
+SidebarGroupLabelComponentRef.displayName = 'SidebarGroupLabelComponent';
 
 interface SidebarGroupActionProps extends React.ComponentProps<'button'> {
   asChild?: boolean;
@@ -614,30 +613,28 @@ const SidebarMenuButtonComponent = React.forwardRef<
 
     return (
       <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Comp
-              ref={ref}
-              data-sidebar="menu-button"
-              className={cn(sidebarMenuButtonVariants({variant, size}), className)}
-              onClick={handleClick}
-              {...props}
-            >
-              {children}
-            </Comp>
-          </TooltipTrigger>
-          {tooltip ? (
-            <TooltipContent side="right" align="center">
-              {tooltip}
-            </TooltipContent>
-          ) : null}
-        </Tooltip>
+        <TooltipTrigger asChild>
+          <Comp
+            ref={ref}
+            data-sidebar="menu-button"
+            className={cn(sidebarMenuButtonVariants({variant, size}), className)}
+            onClick={handleClick}
+            {...props}
+          >
+            {children}
+          </Comp>
+        </TooltipTrigger>
+        {tooltip ? (
+          <TooltipContent side="right" align="center">
+            {tooltip}
+          </TooltipContent>
+        ) : null}
       </TooltipProvider>
     );
   }
 );
 
-SidebarMenuButtonComponent.displayName = 'SidebarMenuButton';
+SidebarMenuButtonComponent.displayName = 'SidebarMenuButtonComponent';
 
 interface SidebarMenuActionProps extends React.ComponentProps<'button'> {
   asChild?: boolean;
@@ -753,16 +750,18 @@ export const SidebarMenuItem = React.forwardRef<
   SidebarMenuItemProps
 >((props, ref) => <li ref={ref} {...props} />);
 
+
+
 interface SidebarMenuSubButtonProps extends React.ComponentProps<'a'> {
   asChild?: boolean;
   size?: 'sm' | 'md';
   isActive?: boolean;
 }
 
-const SidebarMenuSubButton = React.forwardRef<
+const SidebarMenuSubButtonComponent = React.forwardRef<
   HTMLAnchorElement,
   SidebarMenuSubButtonProps
->(({asChild = false, size = 'md', isActive, className, ...props}, ref) => {
+>(({ asChild = false, size = 'md', isActive, className, ...props }, ref) => {
   const Comp = asChild ? Link : 'a';
 
   return (
@@ -784,7 +783,7 @@ const SidebarMenuSubButton = React.forwardRef<
   );
 });
 
-SidebarMenuSubButton.displayName = 'SidebarMenuSubButton';
+SidebarMenuSubButtonComponent.displayName = 'SidebarMenuSubButtonComponent';
 
 interface SidebarMenuSubItemProps extends React.ComponentProps<'li'> {}
 
@@ -800,7 +799,7 @@ export {
   SidebarGroupComponent as SidebarGroup,
   SidebarGroupAction,
   SidebarGroupContent,
-  SidebarGroupLabelComponent as SidebarGroupLabel,
+  SidebarGroupLabelComponentRef as SidebarGroupLabel,
   SidebarHeader,
   SidebarInput,
   SidebarInset,
@@ -808,10 +807,10 @@ export {
   SidebarMenuAction,
   SidebarMenuBadge,
   SidebarMenuButtonComponent as SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarMenuSubItem as SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarMenuSub,
-  SidebarMenuSubButton,
+  SidebarMenuSubButtonComponent as SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
   SidebarRail,
