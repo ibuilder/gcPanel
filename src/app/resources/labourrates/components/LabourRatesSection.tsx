@@ -1,4 +1,3 @@
-tsx
 export default function LabourRatesSection() {
   return (
     <div>

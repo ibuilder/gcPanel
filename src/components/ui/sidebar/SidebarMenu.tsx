@@ -103,29 +103,34 @@ const SidebarMenuButtonComponent = forwardRef<
       </>
     );
 
+    const button = <Comp
+      ref={ref}
+      className={cn(sidebarMenuButtonVariants({ variant, size, active }), className)}
+      onClick={handleClick}
+      {...props}
+    >{content}</Comp>
+
     return (
-      <TooltipProvider>
-        <TooltipTrigger asChild>
-          <Comp
-            ref={ref}
-            className={cn(sidebarMenuButtonVariants({variant, size, active}), className)}
-            onClick={handleClick}
-            {...props}
-          >
-            {content}
-          </Comp>
-        </TooltipTrigger>
-        {tooltip ? (
-          <TooltipContent side="right" align="center">
-            {tooltip}
-          </TooltipContent>
-        ) : null}
-      </TooltipProvider>
+      <>
+        {tooltip && (
+          <TooltipTrigger asChild={asChild}>
+            {button}
+          </TooltipTrigger>
+        )}
+        {!tooltip && (
+          button
+        )}
+        {tooltip && (
+            <TooltipContent side="right" align="center">
+              {tooltip}
+            </TooltipContent>
+        )}
+      </>
     );
   }
 );
 
-SidebarMenuButtonComponent.displayName = 'SidebarMenuButton';
+SidebarMenuButtonComponent.displayName = 'SidebarMenuButton';  
 
 interface SidebarMenuSkeletonProps extends React.ComponentProps<'li'> {}
 
@@ -218,4 +223,4 @@ const SidebarMenuSubItemComponent = forwardRef<
 
 SidebarMenuSubItemComponent.displayName = 'SidebarMenuSubItemComponent';
 
-export {SidebarMenuComponent as SidebarMenu, SidebarMenuSkeletonComponent as SidebarMenuSkeleton, SidebarMenuItemComponent as SidebarMenuItem, SidebarMenuSubComponent as SidebarMenuSub, SidebarMenuSubButtonComponent as SidebarMenuSubButton, SidebarMenuSubItemComponent as SidebarMenuSubItem}
+export {SidebarMenuComponent as SidebarMenu, SidebarMenuButtonComponent as SidebarMenuButton, SidebarMenuSkeletonComponent as SidebarMenuSkeleton, SidebarMenuItemComponent as SidebarMenuItem, SidebarMenuSubComponent as SidebarMenuSub, SidebarMenuSubButtonComponent as SidebarMenuSubButton, SidebarMenuSubItemComponent as SidebarMenuSubItem}

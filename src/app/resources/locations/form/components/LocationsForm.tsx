@@ -1,4 +1,3 @@
-tsx
 export default function LocationsForm() {
   return (
     <div>

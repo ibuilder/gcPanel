@@ -1,5 +1,4 @@
-tsx
-'use client';
+'use client'
 
 export default function WarrantiesForm() {
   return (

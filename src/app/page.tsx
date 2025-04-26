@@ -1,15 +1,14 @@
-"use client";
+'use client';
 
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import {useEffect, useState} from "react";
-import {Weather, getWeather} from "@/services/weather";
-import {Sidebar, SidebarProvider} from "@/components/ui/sidebar";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect, useState } from "react";
+import { Weather, getWeather } from "@/services/weather";
+import { SidebarProvider, Sidebar, SidebarHeader, SidebarMenu, SidebarMenuAction } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import { Skeleton } from "@/components/ui/skeleton";
-import { SidebarInset } from '@/components/ui/sidebar/SidebarInset';
-
-
-
+import { SidebarInset } from '@/components/ui/sidebar';
+import { SidebarMenuButton } from '@/components/ui/sidebar/SidebarMenu';
+import { usePathname } from 'next/navigation';
 interface ChartData {
     name: string;
     Budget: number;
@@ -34,6 +33,9 @@ const initialData: ChartData[] = [
 
 
 export default function Home() {
+  const pathname = usePathname();
+
+
   const [weather, setWeather] = useState<Weather | null>(null);
   const [data, setData] = useState<ChartData[]>(initialData);
 
@@ -59,7 +61,52 @@ export default function Home() {
   return (
     <SidebarProvider>
       <div className="flex h-screen antialiased text-foreground gap-4">
-        <Sidebar/>
+        <Sidebar>
+          <SidebarHeader>
+            Navigation
+          </SidebarHeader>
+          <SidebarMenu>
+            <SidebarMenuButton active={pathname === '/'} href="/">
+              Dashboard
+            </SidebarMenuButton>
+            <SidebarMenuButton active={pathname === '/closeout'} href="/closeout">
+              Closeout
+            </SidebarMenuButton>
+
+            <SidebarMenuButton active={pathname.startsWith('/contracts')} href="/contracts">
+              Contracts
+            </SidebarMenuButton>
+
+            <SidebarMenuButton active={pathname.startsWith('/cost')} href="/cost">
+              Cost
+            </SidebarMenuButton>
+
+            <SidebarMenuButton active={pathname.startsWith('/engineering')} href="/engineering">
+              Engineering
+            </SidebarMenuButton>
+
+            <SidebarMenuButton active={pathname.startsWith('/field')} href="/field">
+              Field
+            </SidebarMenuButton>
+
+            <SidebarMenuButton active={pathname.startsWith('/reports')} href="/reports">
+              Reports
+            </SidebarMenuButton>
+
+            <SidebarMenuButton active={pathname.startsWith('/resources')} href="/resources">
+              Resources
+            </SidebarMenuButton>
+
+            <SidebarMenuButton active={pathname.startsWith('/safety')} href="/safety">
+              Safety
+            </SidebarMenuButton>
+
+            <SidebarMenuButton active={pathname.startsWith('/settings')} href="/settings">
+              Settings
+            </SidebarMenuButton>
+          </SidebarMenu>
+        </Sidebar>
+
         <div className='p-6 w-full'>
           <h1 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 ">
             Dashboard Overview

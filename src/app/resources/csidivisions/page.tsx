@@ -1,7 +1,7 @@
-import CsiDivisionsSection from './components/CsiDivisionsSection';
+import CsiDivisions from '../CsiDivisions';
 
 export default function Page() {
   return (
-    <CsiDivisionsSection/>
+    <CsiDivisions/>
   );
 }

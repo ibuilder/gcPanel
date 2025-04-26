@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import ProfessionalServiceAgreementForm from './components/ProfessionalServiceAgreementForm';
 

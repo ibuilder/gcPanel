@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {Inter, Roboto_Mono} from 'next/font/google';
 import './globals.css';
 import {ThemeProvider} from "@/components/ThemeProvider";
+import {SidebarProvider} from "@/components/ui/sidebar";
 
 const inter = Inter({
   variable: '--font-inter',
