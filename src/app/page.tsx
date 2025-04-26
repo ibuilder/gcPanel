@@ -106,6 +106,8 @@ export default function Home() {
     fetchWeather();
   }, []);
 
+  const clipId = "recharts2-clip";
+
   return (
     <SidebarProvider>
       <div className="flex h-screen antialiased text-foreground">

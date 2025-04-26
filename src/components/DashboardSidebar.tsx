@@ -14,22 +14,11 @@ import {
 } from "@/components/ui/sidebar";
 import {Moon, Sun, LayoutDashboard, FileText, Lightbulb, Folder, ListChecks, ClipboardList, Calendar, Camera, Layers, ShieldCheck, Briefcase, Coins, File, Archive, Factory, MapPin, DivideCircle, PercentCircle, BadgeCheck, Settings, ChartBar } from "lucide-react";
 import {useTheme} from "@/components/ThemeProvider";
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 import { Badge } from "@/components/ui/badge";
 
 const DashboardSidebar = () => {
   const {theme, setTheme} = useTheme();
-  const [issueCount, setIssueCount] = useState(75);
-  const [showBadge, setShowBadge] = useState(true);
-
-  useEffect(() => {
-    // Simulate issue processing, clear badge after a delay
-    const timer = setTimeout(() => {
-      setShowBadge(false);
-    }, 5000); // Clear after 5 seconds
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <Sidebar collapsible="icon" className="shadow-md bg-sidebar text-sidebar-foreground">
@@ -355,7 +344,7 @@ const DashboardSidebar = () => {
             </SidebarMenuItem>
            </SidebarGroup>
           <SidebarMenuItem>
-            <SidebarMenuButton>
+            <SidebarMenuButton >
               <Lightbulb className="mr-2 h-4 w-4"/>
               <span>AI Insights</span>
             </SidebarMenuButton>
@@ -371,11 +360,6 @@ const DashboardSidebar = () => {
             {theme === "light" ? <Moon className="h-4 w-4"/> : <Sun className="h-4 w-4"/>}
             <span className="text-sm">{theme === "light" ? "Dark" : "Light"} mode</span>
           </button>
-          {showBadge && (
-            <Badge variant="destructive">
-              {issueCount} Issues
-            </Badge>
-          )}
         </div>
       </SidebarFooter>
     </Sidebar>
