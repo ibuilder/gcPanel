@@ -564,7 +564,7 @@ const SidebarMenuButton = React.forwardRef<
     },
     ref
   ) => {
-    const Comp = asChild ? Slot : href ? Link : "button"
+    const Comp = asChild ? Slot : href ? Link : "button";
 
     const button = (
       <Comp
@@ -573,21 +573,21 @@ const SidebarMenuButton = React.forwardRef<
         data-size={size}
         data-active={isActive}
         className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-        {...(href ? { href } : {})}
+        {...(href ? { href: href } : {})}
         {...props}
       >
         {children}
       </Comp>
-    )
+    );
 
     if (!tooltip) {
-      return button
+      return button;
     }
 
     if (typeof tooltip === "string") {
       tooltip = {
         children: tooltip,
-      }
+      };
     }
 
     return (
@@ -600,7 +600,7 @@ const SidebarMenuButton = React.forwardRef<
           {...tooltip}
         />
       </Tooltip>
-    )
+    );
   }
 )
 SidebarMenuButton.displayName = "SidebarMenuButton"
@@ -780,4 +780,3 @@ declare module 'react' {
     'data-active'?: boolean;
   }
 }
-
