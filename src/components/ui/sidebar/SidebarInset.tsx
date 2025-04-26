@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
-import { cn } from '@/lib/utils';
+import React, {forwardRef} from 'react';
+import {cn} from '@/lib/utils';
 
 interface SidebarInsetProps extends React.ComponentProps<'div'> {}
 
-export const SidebarInset = React.forwardRef<
+const SidebarInset = forwardRef<
   HTMLDivElement,
   SidebarInsetProps
 >(({ className, ...props }, ref) => {
@@ -23,3 +23,5 @@ export const SidebarInset = React.forwardRef<
 });
 
 SidebarInset.displayName = 'SidebarInset';
+
+export {SidebarInset};

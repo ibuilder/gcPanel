@@ -15,7 +15,7 @@ import {useRouter} from 'next/navigation';
 
 interface SidebarMenuProps extends React.ComponentProps<'ul'> {}
 
-export const SidebarMenu = forwardRef<
+const SidebarMenu = forwardRef<
   HTMLUListElement,
   SidebarMenuProps
 >(({ className, ...props }, ref) => {
@@ -32,7 +32,7 @@ export const SidebarMenu = forwardRef<
 SidebarMenu.displayName = 'SidebarMenu';
 
 export const sidebarMenuButtonVariants = cva(
-  'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
+  'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
@@ -43,7 +43,7 @@ export const sidebarMenuButtonVariants = cva(
       size: {
         default: 'h-8 text-sm',
         sm: 'h-7 text-xs',
-        lg: 'h-12 text-sm group-data-[collapsible=icon]:!p-0',
+        lg: 'h-12 text-sm',
       },
       active: {
         true: 'bg-sidebar-accent text-sidebar-foreground'
@@ -182,42 +182,6 @@ const SidebarMenuSub = forwardRef<
 
 SidebarMenuSub.displayName = 'SidebarMenuSub';
 
-interface SidebarMenuActionProps extends React.ComponentProps<'span'> {}
-
-const SidebarMenuAction = forwardRef<
-  HTMLSpanElement,
-  SidebarMenuActionProps
->(({ className, ...props }, ref) => {
-  return (
-    <span
-      ref={ref}
-      data-sidebar="menu-action"
-      className={cn('absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100', className)}
-      {...props}
-    />
-  );
-});
-
-SidebarMenuAction.displayName = 'SidebarMenuAction';
-
-interface SidebarMenuBadgeProps extends React.ComponentProps<'span'> {}
-
-const SidebarMenuBadge = forwardRef<
-  HTMLSpanElement,
-  SidebarMenuBadgeProps
->(({ className, ...props }, ref) => {
-  return (
-    <span
-      ref={ref}
-      data-sidebar="menu-badge"
-      className={cn('ml-auto', className)}
-      {...props}
-    />
-  );
-});
-
-SidebarMenuBadge.displayName = 'SidebarMenuBadge';
-
 interface SidebarMenuSubButtonProps extends React.ComponentProps<'button'> {}
 
 const SidebarMenuSubButton = forwardRef<
@@ -238,7 +202,7 @@ SidebarMenuSubButton.displayName = 'SidebarMenuSubButton';
 
 interface SidebarMenuSubItemProps extends React.ComponentProps<'li'> {}
 
-export const SidebarMenuSubItem = forwardRef<
+export const SidebarMenuSubItemComponent = forwardRef<
   HTMLLIElement,
   SidebarMenuSubItemProps
 >(({ className, ...props }, ref) => {
@@ -252,4 +216,6 @@ export const SidebarMenuSubItem = forwardRef<
   );
 });
 
-SidebarMenuSubItem.displayName = 'SidebarMenuSubItem';
+SidebarMenuSubItemComponent.displayName = 'SidebarMenuSubItemComponent';
+
+export {SidebarMenu, SidebarMenuSkeleton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItemComponent as SidebarMenuSubItem}
