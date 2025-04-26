@@ -1,9 +1,12 @@
+'use client';
+
 export * from './Sidebar';
 export * from './SidebarContent';
 export * from './SidebarFooter';
 export * from './SidebarGroup';
 export * from './SidebarGroupContent';
 export * from './SidebarGroupLabel';
+export * from './SidebarGroupAction';
 export * from './SidebarHeader';
 export * from './SidebarInput';
 export * from './SidebarInset';
@@ -11,11 +14,14 @@ export * from './SidebarMenu';
 export * from './SidebarMenuAction';
 export * from './SidebarMenuBadge';
 export * from './SidebarMenuButton';
-export * from './SidebarMenuSubItem';
+export * from './SidebarMenuItem';
 export * from './SidebarMenuSkeleton';
 export * from './SidebarMenuSub';
 export * from './SidebarMenuSubButton';
+export * from './SidebarMenuSubItem';
+export * from './SidebarProvider';
 export * from './SidebarRail';
 export * from './SidebarSeparator';
 export * from './SidebarTrigger';
 export * from './SidebarProvider';
+
