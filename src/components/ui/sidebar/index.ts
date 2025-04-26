@@ -18,3 +18,4 @@ export * from './SidebarMenuSubButton';
 export * from './SidebarRail';
 export * from './SidebarSeparator';
 export * from './SidebarTrigger';
+export * from './SidebarProvider';
