@@ -9,7 +9,9 @@ import React, {
   useCallback,
 } from 'react';
 
-import {PanelLeft} from 'lucide-react';
+import {
+  PanelLeft,
+} from 'lucide-react';
 import {cn} from '@/lib/utils';
 import {Button} from '@/components/ui/button';
 import {Separator} from '@/components/ui/separator';
@@ -466,7 +468,7 @@ interface SidebarGroupLabelProps extends React.ComponentProps<'div'> {
   asChild?: boolean;
 }
 
-const SidebarGroupLabelComponentRef = React.forwardRef<
+const SidebarGroupLabelComponent = React.forwardRef<
   HTMLDivElement,
   SidebarGroupLabelProps
 >((props, ref) => {
@@ -486,7 +488,7 @@ const SidebarGroupLabelComponentRef = React.forwardRef<
   );
 });
 
-SidebarGroupLabelComponentRef.displayName = 'SidebarGroupLabelComponent';
+SidebarGroupLabelComponent.displayName = 'SidebarGroupLabelComponent';
 
 interface SidebarGroupActionProps extends React.ComponentProps<'button'> {
   asChild?: boolean;
@@ -616,7 +618,6 @@ const SidebarMenuButtonComponent = React.forwardRef<
         <TooltipTrigger asChild>
           <Comp
             ref={ref}
-            data-sidebar="menu-button"
             className={cn(sidebarMenuButtonVariants({variant, size}), className)}
             onClick={handleClick}
             {...props}
@@ -641,7 +642,7 @@ interface SidebarMenuActionProps extends React.ComponentProps<'button'> {
   showOnHover?: boolean;
 }
 
-export const SidebarMenuAction = React.forwardRef<
+export const SidebarMenuActionComponent = React.forwardRef<
   HTMLButtonElement,
   SidebarMenuActionProps
 >(({className, asChild = false, showOnHover = false, ...props}, ref) => {
@@ -797,21 +798,21 @@ export {
   SidebarContentComponent as SidebarContent,
   SidebarFooterComponent as SidebarFooter,
   SidebarGroupComponent as SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
-  SidebarGroupLabelComponentRef as SidebarGroupLabel,
+  SidebarGroupActionComponent as SidebarGroupAction,
+  SidebarGroupContent as SidebarGroupContent,
+  SidebarGroupLabelComponent as SidebarGroupLabel,
   SidebarHeader,
   SidebarInput,
   SidebarInset,
   SidebarMenuComponent as SidebarMenu,
-  SidebarMenuAction,
+  SidebarMenuActionComponent as SidebarMenuAction,
   SidebarMenuBadge,
   SidebarMenuButtonComponent as SidebarMenuButton,
-  SidebarMenuSubItem as SidebarMenuItem,
+  SidebarMenuItem as SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarMenuSub,
   SidebarMenuSubButtonComponent as SidebarMenuSubButton,
-  SidebarMenuSubItem,
+  SidebarMenuSubItem as SidebarMenuSubItem,
   SidebarProvider,
   SidebarRail,
   SidebarSeparator,
