@@ -9,22 +9,21 @@ import {
   SidebarTrigger as SidebarTriggerComponent,
   SidebarGroupLabelComponent as SidebarGroupLabelComponent, // Corrected import
 } from "@/components/ui/sidebar";
-import {Moon, Sun, LayoutDashboard, FileText, Lightbulb, Folder, ListChecks, ClipboardList, Calendar, Camera, Layers, ShieldCheck, Briefcase, Coins, File, Archive, Factory, MapPin, DivideCircle, PercentCircle, BadgeCheck, Settings, ChartBar, PanelLeft } from "lucide-react";
+import {PanelLeft } from "lucide-react";
 import {useEffect, useState, forwardRef} from "react";
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
-import {useRouter} from "next/navigation";
-import React from "react";
-import {Button} from "@/components/ui/button";
+import {cn} from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {Separator} from "@/components/ui/separator";
 import {Input} from "@/components/ui/input";
 import {Sheet, SheetContent} from "@/components/ui/sheet";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 import {Skeleton} from "@/components/ui/skeleton";
-import {cn} from "@/lib/utils";
 import {AriaAttributes, DOMAttributes} from "react";
-import {useTheme} from "next-themes";
+import {useTheme as useNextTheme} from "next-themes";
 import {cva, type VariantProps} from "class-variance-authority";
+import Link from 'next/link';
+import {useRouter} from "next/navigation";
+import React from "react";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -76,7 +75,7 @@ const SidebarProvider = React.forwardRef<
   ) => {
     const isMobile = useIsMobile();
     const [openMobile, setOpenMobile] = React.useState(false);
-      const { theme, setTheme } = useTheme();
+    const { theme, setTheme } = useNextTheme();
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
@@ -558,7 +557,7 @@ const SidebarMenuButton = React.forwardRef<
     },
     ref
   ) => {
-    const Comp = asChild ? (href ? Link : "button") : "button";
+    const Comp = asChild ? (href ? Link : React.Fragment) : "button";
     const router = useRouter();
     const handleClick = React.useCallback(() => {
       if (href) {
@@ -566,20 +565,37 @@ const SidebarMenuButton = React.forwardRef<
       }
     }, [href, router]);
 
+    const content = (
+      <>
+        {children}
+      </>
+    );
+
     return (
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Comp
-              ref={ref}
-              className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-              onClick={handleClick}
-              {...(asChild && href ? { href: href } : {})}
-              data-sidebar="menu-button"
-              {...props}
-            >
-              {children}
-            </Comp>
+            {asChild && href ? (
+                <Link
+                  href={href}
+                  ref={ref}
+                  data-sidebar="menu-button"
+                  className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+                  {...props}
+                >
+                  {content}
+                </Link>
+              ) : (
+                <button
+                  ref={ref}
+                  data-sidebar="menu-button"
+                  className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+                  onClick={handleClick}
+                  {...props}
+                >
+                  {content}
+                </button>
+              )}
           </TooltipTrigger>
           {tooltip ? (
             <TooltipContent side="right" align="center">

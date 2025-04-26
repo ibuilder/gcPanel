@@ -10,5 +10,3 @@ export function ThemeProvider({children, ...props}: React.PropsWithChildren<Reac
 export function useTheme() {
   return "";
 }
-
-
