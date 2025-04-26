@@ -13,12 +13,14 @@ import {
   SidebarGroupLabel, // Corrected import
 } from "@/components/ui/sidebar";
 import {Moon, Sun, LayoutDashboard, FileText, Lightbulb, Folder, ListChecks, ClipboardList, Calendar, Camera, Layers, ShieldCheck, Briefcase, Coins, File, Archive, Factory, MapPin, DivideCircle, PercentCircle, BadgeCheck, Settings, ChartBar } from "lucide-react";
-import {useTheme} from "@/components/ThemeProvider";
 import {useEffect, useState} from "react";
 import { Badge } from "@/components/ui/badge";
 
 const DashboardSidebar = () => {
-  const {theme, setTheme} = useTheme();
+  const theme = 'light';
+  const setTheme = (newTheme: string) => {
+      console.log(`Theme set to ${newTheme}`);
+  };
 
   return (
     <Sidebar collapsible="icon" className="shadow-md bg-sidebar text-sidebar-foreground">
@@ -344,7 +346,7 @@ const DashboardSidebar = () => {
             </SidebarMenuItem>
            </SidebarGroup>
           <SidebarMenuItem>
-            <SidebarMenuButton >
+            <SidebarMenuButton href="#">
               <Lightbulb className="mr-2 h-4 w-4"/>
               <span>AI Insights</span>
             </SidebarMenuButton>
@@ -354,7 +356,7 @@ const DashboardSidebar = () => {
       <SidebarFooter>
         <div className="flex items-center justify-between p-2">
           <button
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            onClick={() => console.log('no function')}
             className="flex items-center gap-2 rounded-md p-2 text-left text-sm outline-none transition-transform hover:bg-accent hover:text-accent-foreground"
           >
             {theme === "light" ? <Moon className="h-4 w-4"/> : <Sun className="h-4 w-4"/>}
