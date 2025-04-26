@@ -1,4 +1,3 @@
-
 "use client";
 
 import {
@@ -360,7 +359,7 @@ const SidebarHeader = React.forwardRef<
 });
 SidebarHeader.displayName = "SidebarHeader";
 
-const SidebarFooter = React.forwardRef<
+const SidebarFooterComponent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
@@ -373,7 +372,7 @@ const SidebarFooter = React.forwardRef<
     />
   );
 });
-SidebarFooter.displayName = "SidebarFooter";
+SidebarFooterComponent.displayName = "SidebarFooterComponent";
 
 const SidebarSeparator = React.forwardRef<
   React.ElementRef<typeof Separator>,
@@ -430,7 +429,7 @@ const SidebarGroupLabelComponentRef = React.forwardRef<
   const Comp = asChild ? React.Fragment : "div";
 
   return (
-    <Comp
+    <div
       ref={ref}
       data-sidebar="group-label"
       className={cn(
@@ -451,7 +450,7 @@ const SidebarGroupAction = React.forwardRef<
   const Comp = asChild ? React.Fragment : "button";
 
   return (
-    <Comp
+    <button
       ref={ref}
       data-sidebar="group-action"
       className={cn(
@@ -552,7 +551,7 @@ const SidebarMenuButton = React.forwardRef<
     },
     ref
   ) => {
-    const Comp = asChild ? (href ? Link : React.Fragment) : "button";
+    const Comp = asChild && href ? Link : "button";
     const router = useRouter();
     const handleClick = React.useCallback(() => {
       if (href) {
@@ -565,7 +564,7 @@ const SidebarMenuButton = React.forwardRef<
         ref={ref}
         data-sidebar="menu-button"
         className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-        onClick={handleClick}
+        onClick={href ? handleClick : undefined}
         {...props}
       >
         {children}
@@ -600,7 +599,7 @@ const SidebarMenuAction = React.forwardRef<
   const Comp = asChild ? React.Fragment : "button";
 
   return (
-    <Comp
+    <button
       ref={ref}
       data-sidebar="menu-action"
       className={cn(
@@ -712,22 +711,21 @@ const SidebarMenuSubButton = React.forwardRef<
   const Comp = asChild ? React.Fragment : "a";
 
   return (
-    
-      <Comp
-        ref={ref}
-        data-sidebar="menu-sub-button"
-        data-size={size}
-        data-active={isActive}
-        className={cn(
-          "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground",
-          "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
-          size === "sm" && "text-xs",
-          size === "md" && "text-sm",
-          "group-data-[collapsible=icon]:hidden",
-          className
-        )}
-        {...props}
-      />
+    <Comp
+      ref={ref}
+      data-sidebar="menu-sub-button"
+      data-size={size}
+      data-active={isActive}
+      className={cn(
+        "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground",
+        "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
+        size === "sm" && "text-xs",
+        size === "md" && "text-sm",
+        "group-data-[collapsible=icon]:hidden",
+        className
+      )}
+      {...props}
+    />
   );
 });
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";

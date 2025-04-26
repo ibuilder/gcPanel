@@ -13,10 +13,12 @@ import {
 } from "@/components/ui/sidebar";
 import {Moon, Sun, LayoutDashboard, FileText, Lightbulb, Folder, ListChecks, ClipboardList, Calendar, Camera, Layers, ShieldCheck, Briefcase, Coins, File, Archive, Factory, MapPin, DivideCircle, PercentCircle, BadgeCheck, Settings, ChartBar } from "lucide-react";
 import {useEffect} from "react";
-import {useTheme} from "next-themes";
+import {useTheme} from "@/components/ThemeProvider";
+import {useRouter} from "next/navigation";
 
 const DashboardSidebar = () => {
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
 
 
   return (

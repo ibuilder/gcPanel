@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as React from "react";
 import {ThemeProvider as NextThemesProvider} from "next-themes";
@@ -12,5 +12,3 @@ import { useTheme as useNextTheme } from 'next-themes';
 export function useTheme() {
   return useNextTheme();
 }
-
-    
