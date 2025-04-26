@@ -1,12 +1,7 @@
-'use client';
+import DailyReportsForm from './components/DailyReportsForm';
 
-import ReportForm from '@/components/field/dailyreports/ReportForm';
-
-export default function ReportFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Daily Report</h1>
-      <ReportForm />
-    </div>
+    <DailyReportsForm />
   );
 }

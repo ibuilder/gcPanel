@@ -1,10 +1,5 @@
-'use client';
+import EngineeringSection from './components/EngineeringSection';
 
-export default function Engineering() {
-  return (
-    <div>
-      <h1>Engineering</h1>
-      <p>This is the main engineering page.</p>
-    </div>
-  );
+export default function Page() {
+  return <EngineeringSection />;
 }

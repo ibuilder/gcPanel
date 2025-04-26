@@ -1,10 +1,7 @@
-'use client';
+import SettingsSection from './components/SettingsSection';
 
-export default function Settings() {
+export default function Page() {
   return (
-    <div>
-      <h1>Settings</h1>
-      <p>This is the main settings page.</p>
-    </div>
+    <SettingsSection/>
   );
 }

@@ -1,12 +1,9 @@
-'use client';
+'use client'
 
-import BudgetAndForecastForm from '@/components/cost/budgetandforecast/BudgetAndForecastForm';
+import BudgetAndForecastForm from './components/BudgetAndForecastForm';
 
-export default function BudgetAndForecastFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Budget</h1>
-      <BudgetAndForecastForm />
-    </div>
-  );
+      <BudgetAndForecastForm/>
+  )
 }

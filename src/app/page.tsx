@@ -4,9 +4,8 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {useEffect, useState} from "react";
 import {Weather, getWeather} from "@/services/weather";
-import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
-import DashboardSidebar from "@/components/DashboardSidebar";
-import {Toaster} from "@/components/ui/toaster";
+import {Sidebar, SidebarProvider} from "@/components/ui/sidebar";
+import { Toaster } from "@/components/ui/toaster";
 import {
   BarChart,
   Bar,
@@ -17,7 +16,8 @@ import {
   ResponsiveContainer,
   CartesianGrid, // Correct import
 } from 'recharts'; // Correct import
-import {Skeleton} from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SidebarInset } from '@/components/ui/sidebar/SidebarInset';
 
 
 
@@ -121,10 +121,10 @@ export default function Home() {
 
   return (
     <SidebarProvider>
-      <div className="flex h-screen antialiased text-foreground">
-        <DashboardSidebar/>
-        <SidebarInset className="p-6">
-          <h1 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+      <div className="flex h-screen antialiased text-foreground gap-4">
+        <Sidebar/>
+        <div className='p-6 w-full'>
+          <h1 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 ">
             Dashboard Overview
           </h1>
           <p className="text-muted-foreground">
@@ -245,7 +245,7 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-        </SidebarInset>
+        </div>
       </div>
       <Toaster/>
     </SidebarProvider>

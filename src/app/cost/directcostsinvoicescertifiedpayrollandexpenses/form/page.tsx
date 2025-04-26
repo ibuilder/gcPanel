@@ -1,12 +1,9 @@
 'use client';
 
-import DirectCostForm from '@/components/cost/directcostsinvoicescertifiedpayrollandexpenses/DirectCostForm';
+import DirectCostsInvoicesCertifiedPayrollAndExpensesForm from './components/DirectCostsInvoicesCertifiedPayrollAndExpensesForm';
 
-export default function DirectCostFormPage() {
+export default function Page(){
   return (
-    <div>
-      <h1>Create Direct Cost</h1>
-      <DirectCostForm />
-    </div>
+    <DirectCostsInvoicesCertifiedPayrollAndExpensesForm/>
   );
 }

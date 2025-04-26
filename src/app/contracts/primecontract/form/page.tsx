@@ -1,12 +1,7 @@
-'use client';
+import PrimeContractForm from './components/PrimeContractForm';
 
-import PrimeContractForm from '@/components/contracts/primecontract/PrimeContractForm';
-
-export default function PrimeContractFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Prime Contract</h1>
-      <PrimeContractForm />
-    </div>
+    <PrimeContractForm />
   );
 }

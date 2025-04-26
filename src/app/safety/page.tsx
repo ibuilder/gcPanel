@@ -1,10 +1,7 @@
-'use client';
+import SafetySection from './components/SafetySection';
 
-export default function Safety() {
+export default function Page() {
   return (
-    <div>
-      <h1>Safety</h1>
-      <p>This is the main safety page.</p>
-    </div>
+    <SafetySection />
   );
 }

@@ -1,12 +1,7 @@
-'use client';
+import LetterOfIntentForm from './components/LetterOfIntentForm';
 
-import LetterOfInterestForm from '@/components/contracts/letterofintent/LetterOfInterestForm';
-
-export default function LetterOfInterestFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Letter of Intent</h1>
-      <LetterOfInterestForm />
-    </div>
+    <LetterOfIntentForm/>
   );
 }

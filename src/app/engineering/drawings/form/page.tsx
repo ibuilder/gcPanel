@@ -1,12 +1,8 @@
-'use client';
+import DrawingsForm from './components/DrawingsForm';
 
-import DrawingForm from '@/components/engineering/drawings/DrawingForm';
-
-export default function DrawingFormPage() {
+export default function Page() {
   return (
     <div>
-      <h1>Create Drawing</h1>
-      <DrawingForm />
+        <DrawingsForm/>
     </div>
   );
-}

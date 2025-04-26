@@ -1,12 +1,9 @@
-'use client';
+import LienWaiversForm from './components/LienWaiversForm';
 
-import LienWaiverForm from '@/components/contracts/lienwaivers/LienWaiverForm';
-
-export default function LienWaiverFormPage() {
+export default function Page() {
   return (
     <div>
-      <h1>Create Lien Waiver</h1>
-      <LienWaiverForm />
+      <LienWaiversForm />
     </div>
   );
 }

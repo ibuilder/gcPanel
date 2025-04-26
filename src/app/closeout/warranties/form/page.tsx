@@ -1,12 +1,9 @@
-'use client';
+import WarrantiesForm from './components/WarrantiesForm';
 
-import WarrantyForm from '@/components/closeout/warranties/WarrantyForm';
-
-export default function WarrantyFormPage() {
+export default function Page() {
   return (
     <div>
-      <h1>Create Warranty</h1>
-      <WarrantyForm />
+      <WarrantiesForm/>
     </div>
   );
 }

@@ -1,10 +1,6 @@
-'use client';
+'use client'
+import FieldSection from './components/FieldSection';
 
-export default function Field() {
-  return (
-    <div>
-      <h1>Field</h1>
-      <p>This is the main field page.</p>
-    </div>
-  );
+export default function Page() {
+  return <FieldSection />;
 }

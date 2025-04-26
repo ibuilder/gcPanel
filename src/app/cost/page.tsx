@@ -1,10 +1,9 @@
-'use client';
+'use client'
 
-export default function Cost() {
+import CostSection from './components/CostSection';
+
+export default function Page() {
   return (
-    <div>
-      <h1>Cost</h1>
-      <p>This is the main cost page.</p>
-    </div>
-  );
+      <CostSection/>
+  )
 }

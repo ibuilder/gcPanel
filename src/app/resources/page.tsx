@@ -1,10 +1,7 @@
-'use client';
+import ResourcesSection from './components/ResourcesSection';
 
-export default function Resources() {
+export default function Page() {
   return (
-    <div>
-      <h1>Resources</h1>
-      <p>This is the main resources page.</p>
-    </div>
+    <ResourcesSection />
   );
 }

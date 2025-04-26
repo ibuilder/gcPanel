@@ -1,12 +1,7 @@
-'use client';
+'use client'
 
-import TimeAndMaterialsTicketForm from '@/components/cost/timeandmaterialtickets/TimeAndMaterialsTicketForm';
+import TimeAndMaterialTicketsForm from './components/TimeAndMaterialTicketsForm';
 
-export default function TimeAndMaterialsTicketFormPage() {
-  return (
-    <div>
-      <h1>Create Time and Materials Ticket</h1>
-      <TimeAndMaterialsTicketForm />
-    </div>
-  );
+export default function Page() {
+  return <TimeAndMaterialTicketsForm />;
 }

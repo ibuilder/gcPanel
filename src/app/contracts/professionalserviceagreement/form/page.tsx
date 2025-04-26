@@ -1,12 +1,7 @@
 'use client';
 
-import ProfessionalServiceAgreementForm from '@/components/contracts/professionalserviceagreement/ProfessionalServiceAgreementForm';
+import ProfessionalServiceAgreementForm from './components/ProfessionalServiceAgreementForm';
 
-export default function ProfessionalServiceAgreementFormPage() {
-  return (
-    <div>
-      <h1>Create Professional Service Agreement</h1>
-      <ProfessionalServiceAgreementForm />
-    </div>
-  );
+export default function Page() {
+  return <ProfessionalServiceAgreementForm />;
 }

@@ -1,12 +1,7 @@
-'use client';
+import RfisForm from './components/RfisForm';
 
-import RFIForm from '@/components/engineering/rfis/RFIForm';
-
-export default function RFIFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Request for Information (RFI)</h1>
-      <RFIForm />
-    </div>
+    <RfisForm/>
   );
 }

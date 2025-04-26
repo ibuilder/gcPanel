@@ -1,12 +1,7 @@
-'use client';
+import PunchListForm from './components/PunchListForm';
 
-import PunchlistItemForm from '@/components/field/punchlist/PunchlistItemForm';
-
-export default function PunchlistItemFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Punchlist Item</h1>
-      <PunchlistItemForm />
-    </div>
+    <PunchListForm/>
   );
 }

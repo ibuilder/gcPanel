@@ -1,12 +1,7 @@
-'use client';
+import CertificateOfInsuranceForm from './components/CertificateOfInsuranceForm';
 
-import CertificateOfInsuranceForm from '@/components/contracts/certificateofinsurance/CertificateOfInsuranceForm';
-
-export default function CertificateOfInsuranceFormPage() {
+export default function Page(){
   return (
-    <div>
-      <h1>Create Certificate of Insurance</h1>
-      <CertificateOfInsuranceForm />
-    </div>
-  );
+    <CertificateOfInsuranceForm/>
+  )
 }

@@ -1,12 +1,7 @@
-'use client';
+import PullPlanningForm from './components/PullPlanningForm';
 
-import PullPlanForm from '@/components/field/pullplanning/PullPlanForm';
-
-export default function PullPlanFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Pull Plan</h1>
-      <PullPlanForm />
-    </div>
-  );
+    <PullPlanningForm />
+  )
 }

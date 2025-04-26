@@ -1,12 +1,7 @@
-'use client';
+'use client'
 
-import PotentialChangeForm from '@/components/cost/potentialchanges/PotentialChangeForm';
+import PotentialChangesForm from './components/PotentialChangesForm';
 
-export default function PotentialChangeFormPage() {
-  return (
-    <div>
-      <h1>Create Potential Change</h1>
-      <PotentialChangeForm />
-    </div>
-  );
+export default function Page() {
+  return <PotentialChangesForm />;
 }

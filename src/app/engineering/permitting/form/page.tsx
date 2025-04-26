@@ -1,12 +1,7 @@
-'use client';
+import PermittingForm from './components/PermittingForm';
 
-import PermitForm from '@/components/engineering/permitting/PermitForm';
-
-export default function PermitFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Permit</h1>
-      <PermitForm />
-    </div>
+    <PermittingForm />
   );
 }

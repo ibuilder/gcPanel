@@ -1,12 +1,6 @@
 'use client';
 
-import TransmittalForm from '@/components/engineering/transmittals/TransmittalForm';
+import TransmittalsForm from './components/TransmittalsForm';
 
-export default function TransmittalFormPage() {
-  return (
-    <div>
-      <h1>Create Transmittal</h1>
-      <TransmittalForm />
-    </div>
-  );
+export default function Page() { return <TransmittalsForm />; }
 }

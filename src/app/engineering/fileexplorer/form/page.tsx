@@ -1,12 +1,7 @@
-'use client';
+import FileExplorerForm from './components/FileExplorerForm';
 
-import FileForm from '@/components/engineering/fileexplorer/FileForm';
-
-export default function FileFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Upload File</h1>
-      <FileForm />
-    </div>
-  );
+    <FileExplorerForm/>
+  )
 }

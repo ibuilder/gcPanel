@@ -1,10 +1,6 @@
-'use client';
+import CloseoutSection from './components/CloseoutSection';
 
-export default function Closeout() {
-  return (
-    <div>
-      <h1>Closeout</h1>
-      <p>This is the main closeout page.</p>
-    </div>
-  );
+export default function Page() {
+  return <CloseoutSection />;
 }
+

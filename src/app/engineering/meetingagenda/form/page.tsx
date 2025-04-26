@@ -1,12 +1,5 @@
-'use client';
+import MeetingAgendaForm from './components/MeetingAgendaForm';
 
-import MeetingForm from '@/components/engineering/meetingagenda/MeetingForm';
-
-export default function MeetingFormPage() {
-  return (
-    <div>
-      <h1>Create Meeting</h1>
-      <MeetingForm />
-    </div>
-  );
+export default function Page() {
+  return <MeetingAgendaForm />;
 }

@@ -1,12 +1,7 @@
-'use client';
+import ChecklistsForm from './components/ChecklistsForm';
 
-import ChecklistForm from '@/components/field/checklists/ChecklistForm';
-
-export default function ChecklistFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Checklist</h1>
-      <ChecklistForm />
-    </div>
+    <ChecklistsForm />
   );
 }

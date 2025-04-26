@@ -1,12 +1,7 @@
 'use client';
 
-import ChangeOrderForm from '@/components/cost/changeorders/ChangeOrderForm';
+import ChangeOrdersForm from './components/ChangeOrdersForm';
 
-export default function ChangeOrderFormPage() {
-  return (
-    <div>
-      <h1>Create Change Order</h1>
-      <ChangeOrderForm />
-    </div>
-  );
+export default function Page(){
+  return <ChangeOrdersForm/>
 }

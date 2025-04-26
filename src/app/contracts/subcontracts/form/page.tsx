@@ -1,12 +1,7 @@
-'use client';
+import SubcontractsForm from './components/SubcontractsForm';
 
-import SubcontractForm from '@/components/contracts/subcontracts/SubcontractForm';
-
-export default function SubcontractFormPage() {
+export default function Page() {
   return (
-    <div>
-      <h1>Create Subcontract</h1>
-      <SubcontractForm />
-    </div>
+    <SubcontractsForm />
   );
 }

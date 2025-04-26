@@ -1,12 +1,7 @@
 'use client';
 
-import InvoiceForm from '@/components/cost/invoicingaiag702g703/InvoiceForm';
+import InvoicingAiag702G703Form from './components/InvoicingAiag702G703Form';
 
-export default function InvoiceFormPage() {
-  return (
-    <div>
-      <h1>Create Invoice</h1>
-      <InvoiceForm />
-    </div>
-  );
+export default function Page() {
+  return <InvoicingAiag702G703Form />;
 }
