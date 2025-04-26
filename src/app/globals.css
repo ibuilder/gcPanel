@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,7 +33,7 @@ body {
     --chart-4: 50 90% 55%;
     --chart-5: 330 85% 65%;
     --radius: 0.75rem;
-    --sidebar-background: 33, 48, 62; /* Dark blue (#21303E) */
+    --sidebar-background: 21, 66, 82; /* Dark blue (#214252) */
     --sidebar-foreground: 220 25% 80%; /* Light gray */
     --sidebar-primary: 180 50% 40%; /* Teal (#26A69A) */
     --sidebar-primary-foreground: 0 0% 100%;
@@ -44,7 +43,7 @@ body {
     --sidebar-ring: 180 50% 40%; /* Teal (#26A69A) */
   }
   .dark {
-    --background: 33, 48, 62; /* Dark blue (#21303E) */
+    --background: 21, 66, 82; /* Dark blue (#214252) */
     --foreground: 220 20% 90%; /* Light gray (#F5F5F5) */
     --card: 220 12% 20%;
     --card-foreground: 210 20% 90%;
@@ -68,7 +67,7 @@ body {
     --chart-3: 280 70% 70%;
     --chart-4: 50 90% 65%;
     --chart-5: 330 85% 75%;
-    --sidebar-background: 33, 48, 62; /* Dark blue (#21303E) */
+    --sidebar-background: 21, 66, 82; /* Dark blue (#214252) */
     --sidebar-foreground: 220 20% 80%; /* Light gray (#F5F5F5) */
     --sidebar-primary: 180 50% 50%; /* Teal (#26A69A) */
     --sidebar-primary-foreground: 222.2 47.4% 11.2%;
@@ -148,3 +147,4 @@ body {
 .btn-primary:hover {
     background-color: #0056b3;
 }
+
