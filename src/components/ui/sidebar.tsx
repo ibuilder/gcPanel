@@ -2,20 +2,18 @@
 
 import {
   Sidebar,
-  SidebarContent,
-  SidebarFooter,
+  SidebarContent as SidebarContentComponent,
+  SidebarFooter as SidebarFooterComponent,
   SidebarGroup,
-  SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
+  SidebarMenuButton as SidebarMenuButtonComponent,
   SidebarMenuItem,
   SidebarTrigger,
-  SidebarGroupLabel, // Corrected import
+  SidebarGroupLabel as SidebarGroupLabelComponent, // Corrected import
 } from "@/components/ui/sidebar";
-import {Moon, Sun, LayoutDashboard, FileText, Lightbulb, Folder, ListChecks, ClipboardList, Calendar, Camera, Layers, ShieldCheck, Briefcase, Coins, File, Archive, Factory, MapPin, DivideCircle, PercentCircle, BadgeCheck, Settings, ChartBar } from "lucide-react";
+import {Moon, Sun, LayoutDashboard, FileText, Lightbulb, Folder, ListChecks, ClipboardList, Calendar, Camera, Layers, ShieldCheck, Briefcase, Coins, File, Archive, Factory, MapPin, DivideCircle, PercentCircle, BadgeCheck, Settings, ChartBar, PanelLeft } from "lucide-react";
 import {useEffect, useState} from "react";
 import { Badge } from "@/components/ui/badge";
-import {useTheme} from "next-themes";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
 import React from "react";
@@ -25,23 +23,9 @@ import {Input} from "@/components/ui/input";
 import {Sheet, SheetContent} from "@/components/ui/sheet";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
 import {Skeleton} from "@/components/ui/skeleton";
-import {
-  getSegmentParam,
-  onSegmentPrerenderError,
-  postponeWithTracking,
-  createPrerenderParams,
-  createRenderParams,
-  createPrerenderSearchParams,
-  createRenderSearchParams
-} from "next/dist/client/components/app-router-headers";
-import {getResolvedViewport, getNotFoundViewport, getResolvedMetadata, getNotFoundMetadata} from "next/dist/client/components/metadata/get-metadata";
-import {createResponse, getChunk, startWork, abort, startFlowing, close} from "next/dist/client/components/rsc-link";
-import {dynamicParamTypes, PARAMETER_PATTERN} from "next/dist/shared/lib/router/utils/route-regex";
-import {PrefetchTreeData} from "next/dist/client/components/app-router";
-import {useIsMobile} from "@/hooks/use-mobile";
 import {cn} from "@/lib/utils";
 import {AriaAttributes, DOMAttributes} from "react";
-
+import {useTheme} from "next-themes";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -93,6 +77,7 @@ const SidebarProvider = React.forwardRef<
   ) => {
     const isMobile = useIsMobile();
     const [openMobile, setOpenMobile] = React.useState(false);
+      const { theme, setTheme } = useTheme();
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
@@ -383,7 +368,7 @@ const SidebarHeader = React.forwardRef<
 });
 SidebarHeader.displayName = "SidebarHeader";
 
-const SidebarFooterComponent = React.forwardRef<
+const SidebarFooter = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
@@ -396,7 +381,7 @@ const SidebarFooterComponent = React.forwardRef<
     />
   );
 });
-SidebarFooterComponent.displayName = "SidebarFooter";
+SidebarFooter.displayName = "SidebarFooter";
 
 const SidebarSeparator = React.forwardRef<
   React.ElementRef<typeof Separator>,
@@ -413,7 +398,7 @@ const SidebarSeparator = React.forwardRef<
 });
 SidebarSeparator.displayName = "SidebarSeparator";
 
-const SidebarContentComponent = React.forwardRef<
+const SidebarContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
@@ -429,9 +414,9 @@ const SidebarContentComponent = React.forwardRef<
     />
   );
 });
-SidebarContentComponent.displayName = "SidebarContent";
+SidebarContent.displayName = "SidebarContent";
 
-const SidebarGroup = React.forwardRef<
+const SidebarGroupComponent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
@@ -444,7 +429,7 @@ const SidebarGroup = React.forwardRef<
     />
   );
 });
-SidebarGroup.displayName = "SidebarGroup";
+SidebarGroupComponent.displayName = "SidebarGroup";
 
 const SidebarGroupLabel = React.forwardRef<
   HTMLDivElement,
@@ -567,7 +552,7 @@ interface SidebarMenuButtonProps
   href?: string;
 }
 
-const SidebarMenuButton = React.forwardRef<
+const SidebarMenuButtonComponent = React.forwardRef<
   HTMLButtonElement,
   SidebarMenuButtonProps
 >(
@@ -593,26 +578,27 @@ const SidebarMenuButton = React.forwardRef<
       }
     }, [href, router]);
 
+    
     let buttonContent = (
       <>
         {children}
       </>
     );
 
-    if (asChild) {
-      buttonContent = React.Children.only(children as React.ReactNode);
-    }
-    
+
     const button = (
+      
       <Comp
         ref={ref}
         className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
         onClick={handleClick}
         {...(href ? { href: href } : {})}
+        data-sidebar="menu-button"
         {...props}
       >
-        {buttonContent}
+        {children}
       </Comp>
+      
     );
 
     return (
@@ -631,7 +617,7 @@ const SidebarMenuButton = React.forwardRef<
     );
   }
 );
-SidebarMenuButton.displayName = "SidebarMenuButton";
+SidebarMenuButtonComponent.displayName = "SidebarMenuButtonComponent";
 
 const SidebarMenuAction = React.forwardRef<
   HTMLButtonElement,
@@ -640,7 +626,7 @@ const SidebarMenuAction = React.forwardRef<
     showOnHover?: boolean;
   }
 >(({ className, asChild = false, showOnHover = false, ...props }, ref) => {
-  const Comp = asChild ? React.Fragment : "button";
+  const Comp = asChild ? Slot : "button";
 
   return (
     <Comp
@@ -774,11 +760,13 @@ const SidebarMenuSubButton = React.forwardRef<
 });
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
 
+
+
 export {
   Sidebar,
-  SidebarContentComponent as SidebarContent,
-  SidebarFooterComponent as SidebarFooter,
-  SidebarGroup,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroupComponent as SidebarGroup,
   SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -788,7 +776,7 @@ export {
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuBadge,
-  SidebarMenuButton,
+  SidebarMenuButtonComponent as SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarMenuSub,
@@ -806,4 +794,3 @@ declare module "react" {
     "data-active"?: boolean;
   }
 }
-
