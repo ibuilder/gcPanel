@@ -172,7 +172,7 @@ const SidebarProviderComponent = React.forwardRef<
   }
 );
 
-SidebarProviderComponent.displayName = 'SidebarProvider';
+SidebarProviderComponent.displayName = 'SidebarProviderComponent';
 
 interface SidebarProps extends React.ComponentProps<'div'> {
   side?: 'left' | 'right';
@@ -376,7 +376,7 @@ export const SidebarInput = React.forwardRef<
 
 interface SidebarHeaderProps extends React.ComponentProps<'div'> {}
 
-export const SidebarHeader = React.forwardRef<
+const SidebarHeaderComponent = React.forwardRef<
   HTMLDivElement,
   SidebarHeaderProps
 >(({className, ...props}, ref) => {
@@ -389,6 +389,8 @@ export const SidebarHeader = React.forwardRef<
     />
   );
 });
+
+SidebarHeaderComponent.displayName = "SidebarHeaderComponent";
 
 interface SidebarFooterProps extends React.ComponentProps<'div'> {}
 
@@ -466,7 +468,7 @@ interface SidebarGroupLabelProps extends React.ComponentProps<'div'> {
   asChild?: boolean;
 }
 
-const SidebarGroupLabelComponent = React.forwardRef<
+const SidebarGroupLabelComponentRef = React.forwardRef<
   HTMLDivElement,
   SidebarGroupLabelProps
 >((props, ref) => {
@@ -486,14 +488,14 @@ const SidebarGroupLabelComponent = React.forwardRef<
   );
 });
 
-SidebarGroupLabelComponent.displayName = 'SidebarGroupLabelComponent';
+SidebarGroupLabelComponentRef.displayName = 'SidebarGroupLabelComponentRef';
 
 interface SidebarGroupActionProps extends React.ComponentProps<'button'> {
   asChild?: boolean;
   showOnHover?: boolean;
 }
 
-export const SidebarGroupActionComponent = React.forwardRef<
+const SidebarGroupActionComponent = React.forwardRef<
   HTMLButtonElement,
   SidebarGroupActionProps
 >(({className, asChild = false, showOnHover = false, ...props}, ref) => {
@@ -521,7 +523,7 @@ export const SidebarGroupActionComponent = React.forwardRef<
 
 interface SidebarGroupContentProps extends React.ComponentProps<'div'> {}
 
-export const SidebarGroupContent = React.forwardRef<
+const SidebarGroupContentComponent = React.forwardRef<
   HTMLDivElement,
   SidebarGroupContentProps
 >(({className, ...props}, ref) => {
@@ -616,7 +618,6 @@ const SidebarMenuButtonComponent = React.forwardRef<
         <TooltipTrigger asChild>
           <Comp
             ref={ref}
-            data-sidebar="menu-button"
             className={cn(sidebarMenuButtonVariants({variant, size}), className)}
             onClick={handleClick}
             {...props}
@@ -641,7 +642,7 @@ interface SidebarMenuActionProps extends React.ComponentProps<'button'> {
   showOnHover?: boolean;
 }
 
-export const SidebarMenuActionComponent = React.forwardRef<
+const SidebarMenuActionComponent = React.forwardRef<
   HTMLButtonElement,
   SidebarMenuActionProps
 >(({className, asChild = false, showOnHover = false, ...props}, ref) => {
@@ -796,10 +797,10 @@ export {
   SidebarFooterComponent as SidebarFooter,
   SidebarGroupComponent as SidebarGroup,
   SidebarGroupActionComponent as SidebarGroupAction,
-  SidebarGroupContent as SidebarGroupContent,
-  SidebarGroupLabelComponent as SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInput,
+  SidebarGroupContentComponent as SidebarGroupContent,
+  SidebarGroupLabelComponentRef as SidebarGroupLabel,
+  SidebarHeaderComponent as SidebarHeader,
+  SidebarInput as SidebarInput,
   SidebarInset,
   SidebarMenuComponent as SidebarMenu,
   SidebarMenuActionComponent as SidebarMenuAction,
