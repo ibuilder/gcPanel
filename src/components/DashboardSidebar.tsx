@@ -5,7 +5,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -368,3 +367,4 @@ const DashboardSidebar = () => {
 };
 
 export default DashboardSidebar;
+

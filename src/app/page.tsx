@@ -16,6 +16,7 @@ import {
   ResponsiveContainer,
   CartesianGrid
 } from 'recharts';
+import {Skeleton} from "@/components/ui/skeleton";
 
 
 
@@ -107,7 +108,15 @@ export default function Home() {
     fetchWeather();
   }, []);
 
-  const clipId = "recharts2-clip";
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
 
   return (
     <SidebarProvider>
@@ -143,7 +152,11 @@ export default function Home() {
                 <CardDescription className="text-sm text-muted-foreground">Overall project completion</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">75%</div>
+                {isLoading ? (
+                  <Skeleton className="h-6 w-1/2" />
+                ) : (
+                  <div className="text-2xl font-bold">75%</div>
+                )}
               </CardContent>
             </Card>
 
@@ -153,7 +166,11 @@ export default function Home() {
                 <CardDescription className="text-sm text-muted-foreground">Remaining budget</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">$250,000</div>
+                {isLoading ? (
+                  <Skeleton className="h-6 w-1/2" />
+                ) : (
+                  <div className="text-2xl font-bold">$250,000</div>
+                )}
               </CardContent>
             </Card>
 
@@ -163,7 +180,11 @@ export default function Home() {
                 <CardDescription className="text-sm text-muted-foreground">Requests for Information</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">15</div>
+                {isLoading ? (
+                  <Skeleton className="h-6 w-1/2" />
+                ) : (
+                  <div className="text-2xl font-bold">15</div>
+                )}
               </CardContent>
             </Card>
 
@@ -173,7 +194,11 @@ export default function Home() {
                 <CardDescription className="text-sm text-muted-foreground">Submittals due this week</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">3</div>
+                {isLoading ? (
+                  <Skeleton className="h-6 w-1/2" />
+                ) : (
+                  <div className="text-2xl font-bold">3</div>
+                )}
               </CardContent>
             </Card>
           </div>
