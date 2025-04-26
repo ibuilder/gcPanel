@@ -15,7 +15,7 @@ import {useRouter} from 'next/navigation';
 
 interface SidebarMenuProps extends React.ComponentProps<'ul'> {}
 
-const SidebarMenu = forwardRef<
+const SidebarMenuComponent = forwardRef<
   HTMLUListElement,
   SidebarMenuProps
 >(({ className, ...props }, ref) => {
@@ -29,7 +29,7 @@ const SidebarMenu = forwardRef<
   );
 });
 
-SidebarMenu.displayName = 'SidebarMenu';
+SidebarMenuComponent.displayName = 'SidebarMenu';
 
 export const sidebarMenuButtonVariants = cva(
   'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
@@ -66,7 +66,7 @@ interface SidebarMenuButtonProps
   description?: string;
 }
 
-export const SidebarMenuButton = forwardRef<
+const SidebarMenuButtonComponent = forwardRef<
   HTMLButtonElement,
   SidebarMenuButtonProps
 >(
@@ -125,11 +125,11 @@ export const SidebarMenuButton = forwardRef<
   }
 );
 
-SidebarMenuButton.displayName = 'SidebarMenuButton';
+SidebarMenuButtonComponent.displayName = 'SidebarMenuButton';
 
 interface SidebarMenuSkeletonProps extends React.ComponentProps<'li'> {}
 
-const SidebarMenuSkeleton = forwardRef<
+const SidebarMenuSkeletonComponent = forwardRef<
   HTMLLIElement,
   SidebarMenuSkeletonProps
 >(({ className, ...props }, ref) => {
@@ -144,11 +144,11 @@ const SidebarMenuSkeleton = forwardRef<
   );
 });
 
-SidebarMenuSkeleton.displayName = 'SidebarMenuSkeleton';
+SidebarMenuSkeletonComponent.displayName = 'SidebarMenuSkeleton';
 
 interface SidebarMenuItemProps extends React.ComponentProps<'li'> {}
 
-export const SidebarMenuItem = forwardRef<
+const SidebarMenuItemComponent = forwardRef<
   HTMLLIElement,
   SidebarMenuItemProps
 >(({ className, ...props }, ref) => {
@@ -162,11 +162,11 @@ export const SidebarMenuItem = forwardRef<
   );
 });
 
-SidebarMenuItem.displayName = 'SidebarMenuItem';
+SidebarMenuItemComponent.displayName = 'SidebarMenuItem';
 
 interface SidebarMenuSubProps extends React.ComponentProps<'ul'> {}
 
-const SidebarMenuSub = forwardRef<
+const SidebarMenuSubComponent = forwardRef<
   HTMLUListElement,
   SidebarMenuSubProps
 >(({ className, ...props }, ref) => {
@@ -180,11 +180,11 @@ const SidebarMenuSub = forwardRef<
   );
 });
 
-SidebarMenuSub.displayName = 'SidebarMenuSub';
+SidebarMenuSubComponent.displayName = 'SidebarMenuSub';
 
 interface SidebarMenuSubButtonProps extends React.ComponentProps<'button'> {}
 
-const SidebarMenuSubButton = forwardRef<
+const SidebarMenuSubButtonComponent = forwardRef<
   HTMLButtonElement,
   SidebarMenuSubButtonProps
 >(({ className, ...props }, ref) => {
@@ -198,11 +198,11 @@ const SidebarMenuSubButton = forwardRef<
   );
 });
 
-SidebarMenuSubButton.displayName = 'SidebarMenuSubButton';
+SidebarMenuSubButtonComponent.displayName = 'SidebarMenuSubButton';
 
 interface SidebarMenuSubItemProps extends React.ComponentProps<'li'> {}
 
-export const SidebarMenuSubItemComponent = forwardRef<
+const SidebarMenuSubItemComponent = forwardRef<
   HTMLLIElement,
   SidebarMenuSubItemProps
 >(({ className, ...props }, ref) => {
@@ -218,4 +218,4 @@ export const SidebarMenuSubItemComponent = forwardRef<
 
 SidebarMenuSubItemComponent.displayName = 'SidebarMenuSubItemComponent';
 
-export {SidebarMenu, SidebarMenuSkeleton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItemComponent as SidebarMenuSubItem}
+export {SidebarMenuComponent as SidebarMenu, SidebarMenuSkeletonComponent as SidebarMenuSkeleton, SidebarMenuItemComponent as SidebarMenuItem, SidebarMenuSubComponent as SidebarMenuSub, SidebarMenuSubButtonComponent as SidebarMenuSubButton, SidebarMenuSubItemComponent as SidebarMenuSubItem}
