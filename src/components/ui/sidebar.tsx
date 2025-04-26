@@ -431,7 +431,7 @@ interface SidebarContentProps extends React.ComponentProps<'div'> {}
 const SidebarContentComponent = React.forwardRef<
   HTMLDivElement,
   SidebarContentProps
->((props, ref) => {
+>(({className, ...props}, ref) => {
   return (
     <div
       ref={ref}
@@ -488,7 +488,7 @@ const SidebarGroupLabelComponentRef = React.forwardRef<
   );
 });
 
-SidebarGroupLabelComponentRef.displayName = 'SidebarGroupLabelComponentRef';
+SidebarGroupLabelComponentRef.displayName = 'SidebarGroupLabelComponent';
 
 interface SidebarGroupActionProps extends React.ComponentProps<'button'> {
   asChild?: boolean;
@@ -791,6 +791,8 @@ export const SidebarMenuSubItemComponent = React.forwardRef<
   SidebarMenuSubItemProps
 >((props, ref) => <li ref={ref} {...props} />);
 
+SidebarMenuSubItemComponent.displayName = "SidebarMenuSubItemComponent"
+
 export {
   SidebarComponent as Sidebar,
   SidebarContentComponent as SidebarContent,
@@ -806,7 +808,7 @@ export {
   SidebarMenuActionComponent as SidebarMenuAction,
   SidebarMenuBadge,
   SidebarMenuButtonComponent as SidebarMenuButton,
-  SidebarMenuItem as SidebarMenuItem,
+  SidebarMenuSubItemComponent as SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarMenuSub,
   SidebarMenuSubButtonComponent as SidebarMenuSubButton,
