@@ -5,7 +5,7 @@ import {cn} from '@/lib/utils';
 
 interface SidebarMenuActionProps extends React.ComponentProps<'span'> {}
 
-const SidebarMenuAction = forwardRef<
+const SidebarMenuActionComponent = forwardRef<
   HTMLSpanElement,
   SidebarMenuActionProps
 >(({ className, ...props }, ref) => {
@@ -19,6 +19,6 @@ const SidebarMenuAction = forwardRef<
   );
 });
 
-SidebarMenuAction.displayName = 'SidebarMenuAction';
+SidebarMenuActionComponent.displayName = 'SidebarMenuAction';
 
-export {SidebarMenuAction};
+export {SidebarMenuActionComponent as SidebarMenuAction};
