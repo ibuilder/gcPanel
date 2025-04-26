@@ -19,7 +19,6 @@ import {Input} from '@/components/ui/input';
 import {Sheet, SheetContent} from '@/components/ui/sheet';
 import {TooltipProvider, TooltipContent, TooltipTrigger} from '@/components/ui/tooltip';
 import {Skeleton} from '@/components/ui/skeleton';
-import {AriaAttributes, DOMAttributes} from 'react';
 import {useTheme as useNextTheme} from 'next-themes';
 import {cva, type VariantProps} from 'class-variance-authority';
 import Link from 'next/link';
@@ -78,7 +77,7 @@ interface SidebarProviderProps extends React.ComponentProps<'div'> {
   onOpenChange?: (open: boolean) => void;
 }
 
-const SidebarProvider = React.forwardRef<
+const SidebarProviderComponent = React.forwardRef<
   HTMLDivElement,
   SidebarProviderProps
 >(
@@ -173,7 +172,7 @@ const SidebarProvider = React.forwardRef<
   }
 );
 
-SidebarProvider.displayName = 'SidebarProvider';
+SidebarProviderComponent.displayName = 'SidebarProvider';
 
 interface SidebarProps extends React.ComponentProps<'div'> {
   side?: 'left' | 'right';
@@ -261,7 +260,6 @@ const SidebarComponent = React.forwardRef<
               : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l',
             className
           )}
-          {...props}
         >
           <div
             data-sidebar="sidebar"
@@ -752,8 +750,6 @@ export const SidebarMenuItem = React.forwardRef<
   SidebarMenuItemProps
 >((props, ref) => <li ref={ref} {...props} />);
 
-
-
 interface SidebarMenuSubButtonProps extends React.ComponentProps<'a'> {
   asChild?: boolean;
   size?: 'sm' | 'md';
@@ -789,7 +785,7 @@ SidebarMenuSubButtonComponent.displayName = 'SidebarMenuSubButtonComponent';
 
 interface SidebarMenuSubItemProps extends React.ComponentProps<'li'> {}
 
-export const SidebarMenuSubItem = React.forwardRef<
+export const SidebarMenuSubItemComponent = React.forwardRef<
   HTMLLIElement,
   SidebarMenuSubItemProps
 >((props, ref) => <li ref={ref} {...props} />);
@@ -800,7 +796,7 @@ export {
   SidebarFooterComponent as SidebarFooter,
   SidebarGroupComponent as SidebarGroup,
   SidebarGroupActionComponent as SidebarGroupAction,
-  SidebarGroupContent,
+  SidebarGroupContent as SidebarGroupContent,
   SidebarGroupLabelComponent as SidebarGroupLabel,
   SidebarHeader,
   SidebarInput,
@@ -813,16 +809,10 @@ export {
   SidebarMenuSkeleton,
   SidebarMenuSub,
   SidebarMenuSubButtonComponent as SidebarMenuSubButton,
-  SidebarMenuSubItem as SidebarMenuSubItem,
-  SidebarProvider,
+  SidebarMenuSubItemComponent as SidebarMenuSubItem,
+  SidebarProviderComponent as SidebarProvider,
   SidebarRail,
   SidebarSeparator,
   SidebarTriggerComponent as SidebarTrigger,
   useSidebar,
 };
-
-declare module 'react' {
-  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    'data-active'?: boolean;
-  }
-}
