@@ -20,4 +20,3 @@ export * from './SidebarTrigger';
 export * from './SidebarGroup';
 export * from './SidebarGroupContent';
 export * from './SidebarGroupLabel';
-export * from './useSidebar';
