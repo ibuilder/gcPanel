@@ -1,18 +1,16 @@
 "use client";
 
 import {
-  Sidebar,
+  Sidebar as SidebarComponent,
   SidebarContent as SidebarContentComponent,
   SidebarFooter as SidebarFooterComponent,
-  SidebarGroup,
+  SidebarGroup as SidebarGroupComponent,
   SidebarMenu,
-  SidebarMenuButtonComponent as SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarTrigger,
-  SidebarGroupLabel as SidebarGroupLabelComponent, // Corrected import
+  SidebarTrigger as SidebarTriggerComponent,
+  SidebarGroupLabelComponent as SidebarGroupLabelComponent, // Corrected import
 } from "@/components/ui/sidebar";
 import {Moon, Sun, LayoutDashboard, FileText, Lightbulb, Folder, ListChecks, ClipboardList, Calendar, Camera, Layers, ShieldCheck, Briefcase, Coins, File, Archive, Factory, MapPin, DivideCircle, PercentCircle, BadgeCheck, Settings, ChartBar, PanelLeft } from "lucide-react";
-import {useEffect, useState} from "react";
+import {useEffect, useState, forwardRef} from "react";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
@@ -26,6 +24,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 import {cn} from "@/lib/utils";
 import {AriaAttributes, DOMAttributes} from "react";
 import {useTheme} from "next-themes";
+import {cva, type VariantProps} from "class-variance-authority";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -510,21 +509,6 @@ const SidebarMenu = React.forwardRef<
 });
 SidebarMenu.displayName = "SidebarMenu";
 
-const SidebarMenuItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentProps<"li">
->((props, ref) => {
-  return (
-    <li
-      ref={ref}
-      data-sidebar="menu-item"
-      className={cn("group/menu-item relative")}
-      {...props}
-    />
-  );
-});
-SidebarMenuItem.displayName = "SidebarMenuItem";
-
 const sidebarMenuButtonVariants = cva(
   "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
   {
@@ -556,7 +540,7 @@ interface SidebarMenuButtonProps
   href?: string;
 }
 
-const SidebarMenuButtonComponentRef = React.forwardRef<
+const SidebarMenuButton = React.forwardRef<
   HTMLButtonElement,
   SidebarMenuButtonProps
 >(
@@ -574,7 +558,7 @@ const SidebarMenuButtonComponentRef = React.forwardRef<
     },
     ref
   ) => {
-    const Comp = asChild ? React.Fragment : href ? Link : "button";
+    const Comp = asChild ? (href ? Link : "button") : "button";
     const router = useRouter();
     const handleClick = React.useCallback(() => {
       if (href) {
@@ -582,34 +566,20 @@ const SidebarMenuButtonComponentRef = React.forwardRef<
       }
     }, [href, router]);
 
-    
-    let buttonContent = (
-      
-        {children}
-      
-    );
-
-
-    const button = (
-      
-      <Comp
-        ref={ref}
-        className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-        onClick={handleClick}
-        {...(href ? { href: href } : {})}
-        data-sidebar="menu-button"
-        {...props}
-      >
-        {children}
-      </Comp>
-      
-    );
-
     return (
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            {button}
+            <Comp
+              ref={ref}
+              className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+              onClick={handleClick}
+              {...(asChild && href ? { href: href } : {})}
+              data-sidebar="menu-button"
+              {...props}
+            >
+              {children}
+            </Comp>
           </TooltipTrigger>
           {tooltip ? (
             <TooltipContent side="right" align="center">
@@ -621,7 +591,7 @@ const SidebarMenuButtonComponentRef = React.forwardRef<
     );
   }
 );
-SidebarMenuButtonComponentRef.displayName = "SidebarMenuButton";
+SidebarMenuButton.displayName = "SidebarMenuButton";
 
 const SidebarMenuAction = React.forwardRef<
   HTMLButtonElement,
@@ -780,7 +750,7 @@ export {
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuBadge,
-  SidebarMenuButtonComponentRef as SidebarMenuButton,
+  SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarMenuSub,

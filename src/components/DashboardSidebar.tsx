@@ -6,14 +6,13 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarMenu,
-  SidebarMenuButton,
+  SidebarMenuButtonComponent as SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
-  SidebarGroupLabel, // Corrected import
+  SidebarGroupLabelComponent as SidebarGroupLabel, // Corrected import
 } from "@/components/ui/sidebar";
 import {Moon, Sun, LayoutDashboard, FileText, Lightbulb, Folder, ListChecks, ClipboardList, Calendar, Camera, Layers, ShieldCheck, Briefcase, Coins, File, Archive, Factory, MapPin, DivideCircle, PercentCircle, BadgeCheck, Settings, ChartBar } from "lucide-react";
-import {useEffect, useState} from "react";
-import { Badge } from "@/components/ui/badge";
+import {useEffect} from "react";
 import {useTheme} from "next-themes";
 
 const DashboardSidebar = () => {
@@ -22,9 +21,7 @@ const DashboardSidebar = () => {
 
   return (
     <Sidebar collapsible="icon" className="shadow-md bg-sidebar text-sidebar-foreground">
-      <SidebarHeader>
-        <SidebarTrigger />
-      </SidebarHeader>
+      <SidebarTrigger />
       <SidebarContent>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -358,7 +355,7 @@ const DashboardSidebar = () => {
             className="flex items-center gap-2 rounded-md p-2 text-left text-sm outline-none transition-transform hover:bg-accent hover:text-accent-foreground"
           >
             {theme === "light" ? <Moon className="h-4 w-4"/> : <Sun className="h-4 w-4"/>}
-            <span className="text-sm">{theme === "light" ? "Dark" : "Light"} mode</span>
+            <span className="text-sm">{theme === "light" ? "Light" : "Dark"} mode</span>
           </button>
         </div>
       </SidebarFooter>
@@ -367,4 +364,3 @@ const DashboardSidebar = () => {
 };
 
 export default DashboardSidebar;
-

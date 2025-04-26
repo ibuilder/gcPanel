@@ -15,7 +15,7 @@ import {
   Legend,
   ResponsiveContainer,
   CartesianGrid
-} from 'recharts';
+} from 'recharts'; // Correct import
 import {Skeleton} from "@/components/ui/skeleton";
 
 
@@ -130,7 +130,7 @@ export default function Home() {
             Here's an overview of your construction project.
           </p>
 
-          {weather && (
+          {weather ? (
             <div className="mt-6">
               <Card className="rounded-lg shadow-md">
                 <CardHeader>
@@ -140,6 +140,18 @@ export default function Home() {
                 <CardContent>
                   <div className="text-xl">Temperature: {weather.temperatureFarenheit}°F</div>
                   <div className="text-xl">Conditions: {weather.conditions}</div>
+                </CardContent>
+              </Card>
+            </div>
+          ) : (
+            <div className="mt-6">
+              <Card className="rounded-lg shadow-md">
+                <CardHeader>
+                  <CardTitle className="text-lg font-semibold">Current Weather</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">Weather conditions at the project site</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Skeleton className="h-[75px] w-full"/>
                 </CardContent>
               </Card>
             </div>
