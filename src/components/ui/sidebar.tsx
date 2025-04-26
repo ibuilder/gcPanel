@@ -1,15 +1,9 @@
+
 "use client";
 
 import {
-  Sidebar as SidebarComponent,
-  SidebarContent as SidebarContentComponent,
-  SidebarFooter as SidebarFooterComponent,
-  SidebarGroup as SidebarGroupComponent,
-  SidebarMenu,
-  SidebarTrigger as SidebarTriggerComponent,
-  SidebarGroupLabelComponent as SidebarGroupLabelComponent, // Corrected import
-} from "@/components/ui/sidebar";
-import {PanelLeft } from "lucide-react";
+  PanelLeft
+} from "lucide-react";
 import {useEffect, useState, forwardRef} from "react";
 import {cn} from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -75,7 +69,7 @@ const SidebarProvider = React.forwardRef<
   ) => {
     const isMobile = useIsMobile();
     const [openMobile, setOpenMobile] = React.useState(false);
-    const { theme, setTheme } = useNextTheme();
+    const { theme } = useNextTheme();
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
@@ -537,6 +531,7 @@ interface SidebarMenuButtonProps
   isActive?: boolean;
   tooltip?: string | React.ReactNode;
   href?: string;
+  children: React.ReactNode; // Make children required
 }
 
 const SidebarMenuButton = React.forwardRef<
@@ -565,31 +560,23 @@ const SidebarMenuButton = React.forwardRef<
       }
     }, [href, router]);
 
+    const content = (
+       <Comp
+        ref={ref}
+        data-sidebar="menu-button"
+        className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+        onClick={handleClick}
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+
     return (
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-             {href ? (
-                <Link
-                  href={href}
-                  ref={ref}
-                  data-sidebar="menu-button"
-                  className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-                  {...props}
-                >
-                  {children}
-                </Link>
-              ) : (
-                <button
-                  ref={ref}
-                  data-sidebar="menu-button"
-                  className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
-                  onClick={handleClick}
-                  {...props}
-                >
-                  {children}
-                </button>
-              )}
+            {content}
           </TooltipTrigger>
           {tooltip ? (
             <TooltipContent side="right" align="center">
