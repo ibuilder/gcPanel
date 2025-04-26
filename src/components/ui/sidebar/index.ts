@@ -23,5 +23,3 @@ export * from './SidebarProvider';
 export * from './SidebarRail';
 export * from './SidebarSeparator';
 export * from './SidebarTrigger';
-export * from './SidebarProvider';
-
