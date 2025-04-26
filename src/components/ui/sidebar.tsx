@@ -810,7 +810,7 @@ export {
   SidebarMenuSubItem as SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarMenuSub,
-  SidebarMenuSubButtonComponent as SidebarMenuSubButton,
+  SidebarMenuSubButtonComponent as SidebarMenuSubButton, // Corrected this line
   SidebarMenuSubItem,
   SidebarProvider,
   SidebarRail,
