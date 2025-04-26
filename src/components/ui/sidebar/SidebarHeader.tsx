@@ -1,13 +1,14 @@
-tsx
-import React, {forwardRef} from 'react';
-import {cn} from '@/lib/utils';
+'use client';
+
+import React, { forwardRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface SidebarHeaderProps extends React.ComponentProps<'div'> {}
 
-const SidebarHeaderComponent = forwardRef<
+export const SidebarHeader = forwardRef<
   HTMLDivElement,
   SidebarHeaderProps
->(({className, ...props}, ref) => {
+>(({ className, ...props }, ref) => {
   return (
     <div
       ref={ref}
@@ -18,6 +19,4 @@ const SidebarHeaderComponent = forwardRef<
   );
 });
 
-SidebarHeaderComponent.displayName = "SidebarHeaderComponent";
-
-export {SidebarHeaderComponent as SidebarHeader};
+SidebarHeader.displayName = 'SidebarHeader';

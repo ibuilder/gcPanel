@@ -15,7 +15,7 @@ import {useRouter} from 'next/navigation';
 
 interface SidebarMenuProps extends React.ComponentProps<'ul'> {}
 
-const SidebarMenuComponent = forwardRef<
+export const SidebarMenu = forwardRef<
   HTMLUListElement,
   SidebarMenuProps
 >(({ className, ...props }, ref) => {
@@ -23,28 +23,31 @@ const SidebarMenuComponent = forwardRef<
     <ul
       ref={ref}
       data-sidebar="menu"
-      className={cn('flex w-full min-w-0 flex-col gap-1')}
+      className={cn('flex w-full min-w-0 flex-col gap-1', className)}
       {...props}
     />
   );
 });
 
-SidebarMenuComponent.displayName = 'SidebarMenuComponent';
+SidebarMenu.displayName = 'SidebarMenu';
 
 export const sidebarMenuButtonVariants = cva(
-  'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
+  'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
   {
     variants: {
       variant: {
-        default: 'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
+        default: 'hover:bg-sidebar-accent hover:text-sidebar-foreground',
         outline:
-          'border border-input bg-background hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
+          'border border-input bg-background hover:bg-sidebar-accent hover:text-sidebar-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
       },
       size: {
         default: 'h-8 text-sm',
         sm: 'h-7 text-xs',
         lg: 'h-12 text-sm group-data-[collapsible=icon]:!p-0',
       },
+      active: {
+        true: 'bg-sidebar-accent text-sidebar-foreground'
+      }
     },
     defaultVariants: {
       variant: 'default',
@@ -60,22 +63,24 @@ interface SidebarMenuButtonProps
   isActive?: boolean;
   tooltip?: string | React.ReactNode;
   href?: string;
+  description?: string;
 }
 
-const SidebarMenuButtonComponent = forwardRef<
+export const SidebarMenuButton = forwardRef<
   HTMLButtonElement,
   SidebarMenuButtonProps
 >(
   (
     {
       asChild = false,
-      isActive = false,
       variant = 'default',
       size = 'default',
       tooltip,
       className,
       href,
       children,
+      description,
+      active,
       ...props
     },
     ref
@@ -90,20 +95,25 @@ const SidebarMenuButtonComponent = forwardRef<
     }, [href, router]);
 
     const content = (
-      <Comp
-        ref={ref}
-        className={cn(sidebarMenuButtonVariants({variant, size}), className)}
-        onClick={handleClick}
-        {...props}
-      >
-        {children}
-      </Comp>
+      <>
+      {children}
+      {description && (
+         <span className="text-xs text-muted-foreground">{description}</span>
+      )}
+      </>
     );
 
     return (
       <TooltipProvider>
         <TooltipTrigger asChild>
-          {content}
+          <Comp
+            ref={ref}
+            className={cn(sidebarMenuButtonVariants({variant, size, active}), className)}
+            onClick={handleClick}
+            {...props}
+          >
+            {content}
+          </Comp>
         </TooltipTrigger>
         {tooltip ? (
           <TooltipContent side="right" align="center">
@@ -115,11 +125,11 @@ const SidebarMenuButtonComponent = forwardRef<
   }
 );
 
-SidebarMenuButtonComponent.displayName = 'SidebarMenuButtonComponent';
+SidebarMenuButton.displayName = 'SidebarMenuButton';
 
 interface SidebarMenuSkeletonProps extends React.ComponentProps<'li'> {}
 
-const SidebarMenuSkeletonComponent = forwardRef<
+const SidebarMenuSkeleton = forwardRef<
   HTMLLIElement,
   SidebarMenuSkeletonProps
 >(({ className, ...props }, ref) => {
@@ -134,11 +144,11 @@ const SidebarMenuSkeletonComponent = forwardRef<
   );
 });
 
-SidebarMenuSkeletonComponent.displayName = 'SidebarMenuSkeletonComponent';
+SidebarMenuSkeleton.displayName = 'SidebarMenuSkeleton';
 
 interface SidebarMenuItemProps extends React.ComponentProps<'li'> {}
 
-const SidebarMenuItemComponent = forwardRef<
+export const SidebarMenuItem = forwardRef<
   HTMLLIElement,
   SidebarMenuItemProps
 >(({ className, ...props }, ref) => {
@@ -152,11 +162,11 @@ const SidebarMenuItemComponent = forwardRef<
   );
 });
 
-SidebarMenuItemComponent.displayName = 'SidebarMenuItemComponent';
+SidebarMenuItem.displayName = 'SidebarMenuItem';
 
 interface SidebarMenuSubProps extends React.ComponentProps<'ul'> {}
 
-const SidebarMenuSubComponent = forwardRef<
+const SidebarMenuSub = forwardRef<
   HTMLUListElement,
   SidebarMenuSubProps
 >(({ className, ...props }, ref) => {
@@ -170,11 +180,11 @@ const SidebarMenuSubComponent = forwardRef<
   );
 });
 
-SidebarMenuSubComponent.displayName = 'SidebarMenuSubComponent';
+SidebarMenuSub.displayName = 'SidebarMenuSub';
 
 interface SidebarMenuActionProps extends React.ComponentProps<'span'> {}
 
-const SidebarMenuActionComponent = forwardRef<
+const SidebarMenuAction = forwardRef<
   HTMLSpanElement,
   SidebarMenuActionProps
 >(({ className, ...props }, ref) => {
@@ -188,11 +198,11 @@ const SidebarMenuActionComponent = forwardRef<
   );
 });
 
-SidebarMenuActionComponent.displayName = 'SidebarMenuActionComponent';
+SidebarMenuAction.displayName = 'SidebarMenuAction';
 
 interface SidebarMenuBadgeProps extends React.ComponentProps<'span'> {}
 
-const SidebarMenuBadgeComponent = forwardRef<
+const SidebarMenuBadge = forwardRef<
   HTMLSpanElement,
   SidebarMenuBadgeProps
 >(({ className, ...props }, ref) => {
@@ -206,11 +216,11 @@ const SidebarMenuBadgeComponent = forwardRef<
   );
 });
 
-SidebarMenuBadgeComponent.displayName = 'SidebarMenuBadgeComponent';
+SidebarMenuBadge.displayName = 'SidebarMenuBadge';
 
 interface SidebarMenuSubButtonProps extends React.ComponentProps<'button'> {}
 
-const SidebarMenuSubButtonComponent = forwardRef<
+const SidebarMenuSubButton = forwardRef<
   HTMLButtonElement,
   SidebarMenuSubButtonProps
 >(({ className, ...props }, ref) => {
@@ -218,17 +228,17 @@ const SidebarMenuSubButtonComponent = forwardRef<
     <button
       ref={ref}
       data-sidebar="menu-sub-button"
-      className={cn('flex items-center w-full gap-2 p-2 rounded-md hover:bg-accent hover:text-accent-foreground', className)}
+      className={cn('flex items-center w-full gap-2 p-2 rounded-md hover:bg-accent hover:text-foreground', className)}
       {...props}
     />
   );
 });
 
-SidebarMenuSubButtonComponent.displayName = 'SidebarMenuSubButtonComponent';
+SidebarMenuSubButton.displayName = 'SidebarMenuSubButton';
 
 interface SidebarMenuSubItemProps extends React.ComponentProps<'li'> {}
 
-const SidebarMenuSubItemComponent = forwardRef<
+export const SidebarMenuSubItem = forwardRef<
   HTMLLIElement,
   SidebarMenuSubItemProps
 >(({ className, ...props }, ref) => {
@@ -242,16 +252,4 @@ const SidebarMenuSubItemComponent = forwardRef<
   );
 });
 
-SidebarMenuSubItemComponent.displayName = 'SidebarMenuSubItemComponent';
-
-export {
-  SidebarMenuComponent as SidebarMenu,
-  SidebarMenuActionComponent as SidebarMenuAction,
-  SidebarMenuBadgeComponent as SidebarMenuBadge,
-  SidebarMenuButtonComponent as SidebarMenuButton,
-  SidebarMenuItemComponent as SidebarMenuItem,
-  SidebarMenuSkeletonComponent as SidebarMenuSkeleton,
-  SidebarMenuSubComponent as SidebarMenuSub,
-  SidebarMenuSubButtonComponent as SidebarMenuSubButton,
-  SidebarMenuSubItemComponent as SidebarMenuSubItem,
-};
+SidebarMenuSubItem.displayName = 'SidebarMenuSubItem';

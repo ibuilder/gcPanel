@@ -1,4 +1,3 @@
-
 "use client";
 
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
@@ -7,15 +6,15 @@ import {Weather, getWeather} from "@/services/weather";
 import {Sidebar, SidebarProvider} from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import {
-  BarChart,
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
+  BarChart,
+  CartesianGrid,
   Legend,
   ResponsiveContainer,
-  CartesianGrid, // Correct import
-} from 'recharts'; // Correct import
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { Skeleton } from "@/components/ui/skeleton";
 import { SidebarInset } from '@/components/ui/sidebar/SidebarInset';
 
@@ -251,4 +250,3 @@ export default function Home() {
     </SidebarProvider>
   );
 }
-

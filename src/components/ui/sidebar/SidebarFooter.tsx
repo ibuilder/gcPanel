@@ -1,10 +1,11 @@
-tsx
+'use client';
+
 import React, { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
 interface SidebarFooterProps extends React.ComponentProps<'div'> {}
 
-const SidebarFooterComponent = forwardRef<
+export const SidebarFooter = forwardRef<
   HTMLDivElement,
   SidebarFooterProps
 >(({ className, ...props }, ref) => {
@@ -18,6 +19,4 @@ const SidebarFooterComponent = forwardRef<
   );
 });
 
-SidebarFooterComponent.displayName = 'SidebarFooterComponent';
-
-export { SidebarFooterComponent as SidebarFooter };
+SidebarFooter.displayName = 'SidebarFooter';
