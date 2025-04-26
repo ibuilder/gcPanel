@@ -5,7 +5,7 @@ export interface Weather {
   /**
    * The temperature in Fahrenheit.
    */
-  temperatureFarenheit: number;
+  temperatureFahrenheit: number; // Corrected spelling
   /**
    * The weather conditions (e.g., Sunny, Cloudy, Rainy).
    */
@@ -19,7 +19,7 @@ export interface Weather {
 export async function getWeather(): Promise<Weather> {
   // TODO: Implement this by calling an API.
   return {
-    temperatureFarenheit: 73,
+    temperatureFahrenheit: 73, // Corrected spelling
     conditions: 'Sunny',
   };
 }

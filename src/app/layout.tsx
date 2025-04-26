@@ -1,8 +1,8 @@
-import type {Metadata} from 'next';
-import {Inter, Roboto_Mono} from 'next/font/google';
+import type { Metadata } from 'next';
+import { Inter, Roboto_Mono } from 'next/font/google';
 import './globals.css';
-import {ThemeProvider} from "@/components/ThemeProvider";
-import {SidebarProvider} from "@/components/ui/sidebar";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { SidebarProvider } from "@/components/ui/sidebar"; // Import SidebarProvider
 
 const inter = Inter({
   variable: '--font-inter',
@@ -12,7 +12,7 @@ const inter = Inter({
 const robotoMono = Roboto_Mono({
   variable: '--font-roboto-mono',
   subsets: ['latin'],
-})
+});
 
 export const metadata: Metadata = {
   title: 'ConstructAI',
@@ -26,15 +26,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-      </ThemeProvider>
+      {/* Apply font variables to the body */}
+      <body className={`${inter.variable} ${robotoMono.variable} font-sans antialiased`}> {/* Added font-sans as a base */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark" // Consider changing default or removing if relying solely on 'system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          {/* Wrap children with SidebarProvider */}
+          <SidebarProvider>
+            {children}
+          </SidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

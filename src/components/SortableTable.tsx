@@ -3,6 +3,7 @@ import {
   useReactTable,
   getCoreRowModel,
   ColumnDef,
+  flexRender, // Import flexRender
 } from '@tanstack/react-table';
 
 interface SortableTableProps<T extends object> {
@@ -25,21 +26,39 @@ const SortableTable = <T extends object>({
   return (
     <div>
       <h2>{title}</h2>
-      <table>
+      {/* Consider adding CSS classes for styling, e.g., from globals.css */}
+      <table className="table"> {/* Added example class */}
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <th key={header.id} colSpan={header.colSpan}> {/* Added colSpan */}
                   {header.isPlaceholder
                     ? null
-                    : header.column.columnDef.header}
+                    : flexRender( // Use flexRender for header content
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                 </th>
               ))}
             </tr>
           ))}
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {/* Render table rows and cells */}
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id}>
+                  {flexRender( // Use flexRender for cell content
+                    cell.column.columnDef.cell,
+                    cell.getContext()
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
